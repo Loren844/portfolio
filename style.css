@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Consolas');
+
+body {
+	font-family: 'Consolas', monospace;
+	margin: 0;
+	padding: 0;
+}
+
+.theme-dark {
+	background-color: rgb(43, 43, 43);
+	color: #fff;
+}
+
+.theme-light {
+	background-color: rgb(255, 255, 255);
+	color: #dddddd;
+}
+
+#terminal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 800px;
+	height: 500px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+}
+
+.theme-dark #terminal {
+	background-color: black;
+	color: white;
+}
+
+.theme-light #terminal {
+	background-color: rgb(240, 240, 240);
+	color:black;
+}
+
+.terminal-header {
+	height: 30px;
+	background-color: #fff;
+	color: #000;
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+}
+
+.terminal-header span {
+	flex: 1;
+	text-align: center;
+    font-weight: bolder;
+}
+
+.button {
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+/*light-theme*/
+.theme-light ::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(240, 240, 240);
+  }
+  
+.theme-light ::-webkit-scrollbar-thumb {
+    background-color: rgb(209, 209, 209);
+    border-radius: 5px;
+}
+
+/*dark-theme*/
+.theme-dark ::-webkit-scrollbar {
+    width: 10px;
+    background-color: #000000;
+  }
+  
+.theme-dark ::-webkit-scrollbar-thumb {
+    background-color: rgb(24, 24, 24);
+    border-radius: 5px;
+}
+
+.close {
+	background-color: #ff3b3b;
+}
+
+.minimize {
+	background-color: #ffc200;
+}
+
+.expand {
+	background-color: #00ca00;
+}
+
+.terminal-body {
+	height: calc(100% - 30px);
+	padding: 10px;
+	overflow-y: scroll;
+	scrollbar-color: #666666 #2b2b2b;
+	scrollbar-width: thin;
+}
+
+
+/*dark-theme*/
+.theme-dark a{
+    color:white;
+    text-decoration: none;
+}
+
+.theme-dark a:visited{
+    color: white;
+	font-weight: bold;
+}
+
+.theme-dark a:hover{
+    font-style: italic;
+    color: white;
+}
+
+.theme-dark a:visited:hover{
+    font-style: italic;
+    color: white;
+    text-decoration: none;
+}
+
+/*light-theme*/
+.theme-light a{
+    color:black;
+    text-decoration: none;
+}
+
+.theme-light a:visited{
+    color: black;
+	font-weight: bold;
+    text-decoration: none;
+}
+
+.theme-light a:hover{
+    font-style: italic;
+    color: black;
+}
+
+.theme-light a:visited:hover{
+    font-style: italic;
+    color: black;
+	font-weight: bold;
+    text-decoration: none;
+}
+
+.terminal-body p {
+	margin: 0;
+	line-height: 1.5;
+    font-size:medium;
+} 
+
+.label-text {
+    display: inline-block;
+    width: 150px;
+    font-family: 'Consolas', monospace;
+    text-align: right;
+    padding-right: 10px;
+}
+    
+#userInput {
+    font-family: 'Consolas', monospace;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+    width: calc(100% - 200px);
+}
+
+.theme-dark #userInput{
+	color: #fff;
+}
+
+.theme-light #userInput{
+	color: black;
+}
+
+
+#output {
+	margin-top: 10px;
+}

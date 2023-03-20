@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Portfolio de Lorenzo BALADIER</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="icon.png" type="image/png">
+</head>
+<body class = "theme-dark">
+	<div id="terminal">
+		<div class="terminal-header">
+			<div class="button close"></div>
+			<div class="button minimize"></div>
+			<div class="button expand"></div>
+			<span>Portfolio de Lorenzo BALADIER</span>
+		</div>
+		<div class="terminal-body">
+			<p>Bienvenue dans mon portfolio! Tapez <i>/help</i> pour voir les commandes disponibles.</p>
+            <label for="userInput" class="label-text">C:\Users\lorenzo_b></label>
+			<input type="text" id="userInput" placeholder="Veuillez saisir une commande...">
+			<div class="suggestions">
+				<ul id="suggestions-list"></ul>
+			</div>
+			<div id="output"></div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            document.getElementById('userInput').focus();
+        };
+    </script>    
+</body>
+</html>
