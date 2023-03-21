@@ -28,8 +28,8 @@ const commands = [
     
     function displayProjects() {
         let projectList = '<p>Cliquez sur le projet qui vous intéresse:<br><ol>';
-        projectList += '<li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Projet à 4</a></li>';
-        projectList += '<li><a href="https://github.com/Loren844/FISK">Jeu "FISK" (java), variante de Risk (en cours) - Projet à 2</a></li>';
+        projectList += '<li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Semestre 1</a></li>';
+        projectList += '<li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk (en cours) - Semestre 2</a></li>';
         projectList += '</ol>';
         output.innerHTML += projectList;
     }
