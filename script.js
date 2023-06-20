@@ -8,9 +8,11 @@ const commands = [
     {command: "/contact", description: "Pour me contacter / Voir mes liens utiles"},
     {command: "/lorenzo", description: "En savoir plus sur moi"},
     {command: "/education", description: "Voir mon parcours scolaire et professionnel"},
+    {command: "/languages", description: "Voir les langages/frameworks que je connais"},
     {command: "/dark", description: "Passer au th&egrave;me sombre"},
     {command: "/light", description: "Passer au th&egrave;me clair"},
     {command: 'clear', description: 'Effacer la console'}]
+    //rajouter les softs skills, presentation entreprise
 
     function displayCommands() {
         let commandList = '<ul>';
@@ -29,7 +31,7 @@ const commands = [
     function displayProjects() {
         let projectList = '<p>Cliquez sur le projet qui vous intéresse:<br><ol>';
         projectList += '<li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Semestre 1</a></li>';
-        projectList += '<li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk (en cours) - Semestre 2</a></li>';
+        projectList += '<li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk - Semestre 2</a></li>';
         projectList += '</ol>';
         output.innerHTML += projectList;
     }
@@ -47,6 +49,29 @@ const commands = [
     // Script pour la fonction "à propos"
     function about() {
         var message = "Ma passion pour le code me vient d'une passion encore plus forte : celle des jeux vidéo. J'ai commencé à coder en 2019, lorsque j'avais 14 ans en ayant comme projet de créer un jeu. <br><br>Après avoir un peu codé en <u>Python</u>, j'ai rapidement su que c'était fait pour moi. C'est pourquoi j'ai choisi la spécialité NSI au lycée, grâce à laquelle j'ai pu consolider mes bases de <u>Python</u> ainsi que de commencer le <u>SQL</u>, le <u>HTML</u> ainsi que le <u>CSS</u>. <br><br>Après l'obtention de mon baccalauréat, il m'est paru naturel de continuer dans une filière d'informatique. Grâce au BUT Informatique, j'ai pu apprendre <u>le C</u>, et je commence <u>le C++</u>, lors de mes semaines en entreprise j'ai du me former au <u>Java</u> ainsi qu'aux frameworks <u>Selenium</u> pour l'automatisation de tests et <u>TestNG</u> pour la gestion des tests. <br><br>J'ai aussi l'occasion d'apprendre le <u>Bash</u> et de m'améliorer en <u>SQL</u>. J'ai également des cours de développement Web qui me permettent d'approfondir mes connaissances en <u>HTML</u> et <u>CSS</u> ainsi que de découvrir le <u>JavaScript</u>.";
+        output.innerHTML = message;
+    }
+
+    function languages() {
+        var message =
+        "<span style=\"color: cyan;\">Langages</span><br>" +
+        "├── <span style=\"color: red;\">Back end</span><br>"+
+        "│   ├── <span style=\"color: blue;\">Orienté objet</span><br>" + 
+        "│   │   ├── Java ****<br>" +
+        "│   │   └── C++ **<br>"+
+        "│   ├── Python ****<br>"+
+        "│   ├── C ***<br>"+
+        "│   ├── SQL **<br>"+
+        "│   └── Bash *<br>"+
+        "├── <span style=\"color: green;\">Front end</span><br>"+
+        "│   ├── HTML ***<br>"+
+        "│   ├── CSS ***<br>"+
+        "│   ├── JavaScript **<br>"+
+        "│   └── TypeScript **<br>"+
+        "└── <span style=\"color: magenta;\">Frameworks</span><br>"+
+        "    ├── Cypress ***<br>"+
+        "    ├── Selenium ***<br>"+
+        "    └── TestNG ***<br></pre>";
         output.innerHTML = message;
     }
     
@@ -99,6 +124,10 @@ const commands = [
                 case '/education':
                     clearConsole();
                     education();
+                    break;
+                case '/languages':
+                    clearConsole();
+                    languages();
                     break;
                 case '/light':
                     toggleLightTheme();
