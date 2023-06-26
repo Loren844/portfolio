@@ -7,6 +7,7 @@ const commands = [
 	{command: '/projects', description: 'Afficher mes projets'},
     {command: "/contact", description: "Pour me contacter / Voir mes liens utiles"},
     {command: "/lorenzo", description: "En savoir plus sur moi"},
+    {command: "/softskills", description:"Découvrir les softs skills que j'ai acquis"},
     {command: "/education", description: "Voir mon parcours scolaire et professionnel"},
     {command: "/languages", description: "Voir les langages/frameworks que je connais"},
     {command: "/dark", description: "Passer au th&egrave;me sombre"},
@@ -14,6 +15,11 @@ const commands = [
     {command: 'clear', description: 'Effacer la console'}]
     //rajouter les softs skills, presentation entreprise
 
+    document.getElementById('enterButton').addEventListener('click', function() {
+        document.getElementById('curtain').style.transform = 'translateY(-100%)';
+      });
+      
+      
     function displayCommands() {
         let commandList = '<ul>';
         for (let i = 0; i < commands.length; i++) {
@@ -48,8 +54,18 @@ const commands = [
     
     // Script pour la fonction "à propos"
     function about() {
-        var message = "Ma passion pour le code me vient d'une passion encore plus forte : celle des jeux vidéo. J'ai commencé à coder en 2019, lorsque j'avais 14 ans en ayant comme projet de créer un jeu. <br><br>Après avoir un peu codé en <u>Python</u>, j'ai rapidement su que c'était fait pour moi. C'est pourquoi j'ai choisi la spécialité NSI au lycée, grâce à laquelle j'ai pu consolider mes bases de <u>Python</u> ainsi que de commencer le <u>SQL</u>, le <u>HTML</u> ainsi que le <u>CSS</u>. <br><br>Après l'obtention de mon baccalauréat, il m'est paru naturel de continuer dans une filière d'informatique. Grâce au BUT Informatique, j'ai pu apprendre <u>le C</u>, et je commence <u>le C++</u>, lors de mes semaines en entreprise j'ai du me former au <u>Java</u> ainsi qu'aux frameworks <u>Selenium</u> pour l'automatisation de tests et <u>TestNG</u> pour la gestion des tests. <br><br>J'ai aussi l'occasion d'apprendre le <u>Bash</u> et de m'améliorer en <u>SQL</u>. J'ai également des cours de développement Web qui me permettent d'approfondir mes connaissances en <u>HTML</u> et <u>CSS</u> ainsi que de découvrir le <u>JavaScript</u>.";
+        var message = "Ma passion pour le code me vient d'une passion encore plus forte : celle des jeux vidéo. J'ai commencé à coder en 2019, lorsque j'avais 14 ans en ayant comme projet de créer un jeu. <br><br>Après avoir un peu codé en <u>Python</u>, j'ai rapidement su que c'était fait pour moi. C'est pourquoi j'ai choisi la spécialité NSI au lycée, grâce à laquelle j'ai pu consolider mes bases de <u>Python</u> ainsi que de commencer le <u>SQL</u>, le <u>HTML</u> ainsi que le <u>CSS</u>. <br><br>Après l'obtention de mon baccalauréat, il m'est paru naturel de continuer dans une filière d'informatique. Grâce au BUT Informatique, j'ai pu apprendre <u>le C</u>, et je commence <u>le C++</u>. Lors de mes semaines en entreprise j'ai du me former au <u>Java</u> ainsi qu'au <u>TypeScript</u>, car j'ai pour projet d'automatiser un site web (au début en <u>Selenium</u> puis basculement sur du <u>Cypress</u>). <br><br>J'ai aussi l'occasion d'apprendre le <u>Bash</u> et de m'améliorer en <u>SQL</u>. J'ai également des cours de développement Web qui me permettent d'approfondir mes connaissances en <u>HTML</u> et <u>CSS</u> ainsi que de découvrir le <u>JavaScript</u>.";
         output.innerHTML = message;
+    }
+
+    function softskills(){
+        let softskillsList = '<p>Voici mes différents Softs Skills :<br><ol>';
+        softskillsList += '<li><p><b>Curieux</b> : Lorsqu’un sujet me passionne, je suis très curieux d’en apprendre plus et très enthousiaste de sortir des sentiers battus. Évidemment comme tout le monde j’ai des préférences, mais découvrir un nouvel aspect d’un sujet n’est jamais une perte de temps pour moi.</li><br>'
+        softskillsList += '<li><p><b>Réaliste</b> mais ambitieux : Bien que je sois très réaliste et rationnel sur mon travail, je suis quelqu’un qui voit les choses en grand et qui ne les fait que très rarement à moitié (lorsque le temps nous manque). Je ne recule pas devant le moindre obstacle et je peux persévérer des heures même si je n’en vois pas le bout.</li><br>'
+        softskillsList += '<li><p><b>Travail en équipe</b> : Je suis quelqu’un de plutôt calme, ce qui me permet d’écouter mes coéquipiers sans vouloir en faire qu’à ma tête.</li><br>'
+        softskillsList += '<li><p><b>Indépendance</b> : J’aime me retrouver seul pour me ressourcer et travailler de manière indépendante me fait du bien. J’arrive à me gérer sans avoir besoin d\'une supervision constante. Le fait d’être seul me permet de me concentrer davantage.</li><br>'
+        softskillsList += '<li><p><b>Adaptabilité</b> : Mon calme fait que je ne suis que très peu affecté par mes émotions, ce qui me permet de travailler sous pression efficacement. Bien que j’ai des préférences, je peux m’adapter à tout. Que cela soit en termes de coéquipiers, de tâches…</li>'
+        output.innerHTML += softskillsList;
     }
 
     function languages() {
@@ -75,9 +91,8 @@ const commands = [
         output.innerHTML = message;
     }
     
-    // Script pour la fonction "formation"
     function education() {
-        var message = "Je suis actuellement &eacute;tudiant &agrave; l'IUT Nice C&ocirc;te d'Azur, sur le p&ocirc;le de Sophia-Antipolis, afin de poursuivre une formation en 3 ans intitul&eacute;e BUT Informatique. Je poursuis cette formation en alternance, dans l'entreprise ESI (le Cannet), ce qui me permet de me familiariser avec le monde du travail.";
+        var message = "Je suis actuellement &eacute;tudiant &agrave; l'IUT Nice C&ocirc;te d'Azur, sur le p&ocirc;le de Sophia-Antipolis, afin de poursuivre une formation en 3 ans intitul&eacute;e BUT Informatique. Je poursuis cette formation en alternance, dans l'entreprise ESI (le Cannet), ce qui me permet de me familiariser avec le monde du travail. <br><br>J'ai intégré cette entreprise en tant qu'alternant tests et validation, ma mission principale chez ESI est de mettre en place un processus d'automatisation des tests des logiciels développés afin de réduire la charge de travail des QA Testers. <br><br> J'ai commencé par coder les tests en Java avec Selenium, cependant nous nous sommes rendus compte que pour la mise en place d'une chaîne d'intégration complète cette solution n'était pas la plus viable. C'est pourquoi nous avons choisi d'utiliser Cypress avec TypeScript.";
         output.innerHTML = message;
     }
 
@@ -120,6 +135,10 @@ const commands = [
                 case '/lorenzo':
                     clearConsole();
                     about();
+                    break;
+                case '/softskills':
+                    clearConsole();
+                    softskills();
                     break;
                 case '/education':
                     clearConsole();
