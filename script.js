@@ -15,9 +15,42 @@ const commands = [
     {command: 'clear', description: 'Effacer la console'}]
     //rajouter les softs skills, presentation entreprise
 
+    const commandsText = ['/help', '/cv', '/projects', '/contact', '/lorenzo', '/softskills', '/education', '/languages', '/dark', '/light', 'clear'];
+
     document.getElementById('enterButton').addEventListener('click', function() {
         document.getElementById('curtain').style.transform = 'translateY(-100%)';
       });
+
+    //ajouter listeners pour la touche tab pour imiter un terminal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            e.preventDefault();
+            let input = userInput.value;
+            if(input === '') {
+                userInput.value = '/help';
+            }
+            else {
+                let commands = [];
+                for (let i = 0; i < commandsText.length; i++) {
+                    if (commandsText[i].startsWith(input)) {
+                        commands.push(commandsText[i]);
+                    }
+                }
+                if (commands.length === 1) {
+                    userInput.value = commands[0];
+                }
+                else if (commands.length > 1) {
+                    //afficher les commandes possibles en dessous
+                    let commandList = ""
+                    for (let i = 0; i < commands.length; i++) {
+                        commandList += commands[i] + "  "
+                    }
+                    clearConsole();
+                    output.innerHTML = commandList;
+                }
+            }
+        }
+    })
       
       
     function displayCommands() {
@@ -35,7 +68,7 @@ const commands = [
     }
     
     function displayProjects() {
-        let projectList = '<p>Cliquez sur le projet qui vous intéresse:<br><ol>';
+        let projectList = '<p>Cliquez sur le projet qui vous int&eacute;resse:<br><ol>';
         projectList += '<li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Semestre 1</a></li>';
         projectList += '<li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk - Semestre 2</a></li>';
         projectList += '</ol>';
@@ -59,7 +92,7 @@ const commands = [
     }
 
     function softskills(){
-        let softskillsList = '<p>Voici mes différents Softs Skills :<br><ol>';
+        let softskillsList = '<p>Voici mes diff&eacute;rents Softs Skills :<br><ol>';
         softskillsList += '<li><p><b>Curieux</b> : Lorsqu’un sujet me passionne, je suis très curieux d’en apprendre plus et très enthousiaste de sortir des sentiers battus. Évidemment comme tout le monde j’ai des préférences, mais découvrir un nouvel aspect d’un sujet n’est jamais une perte de temps pour moi.</li><br>'
         softskillsList += '<li><p><b>Réaliste</b> mais ambitieux : Bien que je sois très réaliste et rationnel sur mon travail, je suis quelqu’un qui voit les choses en grand et qui ne les fait que très rarement à moitié (lorsque le temps nous manque). Je ne recule pas devant le moindre obstacle et je peux persévérer des heures même si je n’en vois pas le bout.</li><br>'
         softskillsList += '<li><p><b>Travail en équipe</b> : Je suis quelqu’un de plutôt calme, ce qui me permet d’écouter mes coéquipiers sans vouloir en faire qu’à ma tête.</li><br>'
