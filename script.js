@@ -71,6 +71,7 @@ const commands = [
         let projectList = '<p>Cliquez sur le projet qui vous int&eacute;resse:<br><ol>';
         projectList += '<li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Semestre 1</a></li>';
         projectList += '<li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk - Semestre 2</a></li>';
+        projectList += '<li><a href="https://github.com/Loren844/blorenzo-portfolio" target="_blank">Portfolio personnel</a></li>';
         projectList += '</ol>';
         output.innerHTML += projectList;
     }
@@ -144,6 +145,10 @@ const commands = [
     userInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             const inputText = userInput.value.toLowerCase();
+            if(userInput.value === '') {
+                return;
+            }
+
             const inputArray = inputText.split(' ');
             const command = inputArray[0];
             output.innerHTML += `<div class="command">${inputText}</div>`;
