@@ -37,9 +37,17 @@
 				<ul id="suggestions-list"></ul>
 			</div>
 			<div id="output"></div>
+			<div id="snakeGame">
+				<h1 id="gameOver" style="display: none;">GAME OVER</h1>
+				<canvas id="gameCanvas" width="300" height="300"></canvas>
+				<p>Score: <span id="score">1</span></p>
+				<button id="replay" class="buttonGame">Rejouer</button>
+				<button id="quit" class="buttonGame">Quitter</button>
+			  </div>
 		</div>
 	</div>
 	<script src="script.js"></script>
+	<script src="game.js"></script>
     <script>
         window.onload = function() {
             document.getElementById('userInput').focus();

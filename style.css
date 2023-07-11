@@ -181,7 +181,6 @@ body {
 	color: black;
 }
 
-
 #output {
 	margin-top: 10px;
 }
@@ -235,6 +234,29 @@ body {
   }
 
 
+/*snake game*/
+#snakeGame{
+	display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonGame{
+	display: none; 
+	color: rgb(105, 105, 105); 
+	padding: 5px;
+}
+
+.buttonGame:hover{
+	color: rgb(255, 255, 255);
+}
+
+canvas{
+	padding: 2px;
+	border: 1px solid #313131;
+}
+
+
   button {
 	position: relative;
 	border: none;
@@ -254,7 +276,7 @@ body {
 	width: 100%;
 	height: 100%;
 	border-radius: 12px;
-	background: hsl(0deg 0% 0% / 0.25);
+	background: hsla(0, 0%, 0%, 0.25);
 	will-change: transform;
 	transform: translateY(2px);
 	transition: transform

@@ -12,10 +12,11 @@ const commands = [
     {command: "/languages", description: "Voir les langages/frameworks que je connais"},
     {command: "/dark", description: "Passer au th&egrave;me sombre"},
     {command: "/light", description: "Passer au th&egrave;me clair"},
+    {command: "/snake", description: "Jouer à un snake codé par moi-même"},
     {command: 'clear', description: 'Effacer la console'}]
     //rajouter les softs skills, presentation entreprise
 
-    const commandsText = ['/help', '/cv', '/projects', '/contact', '/lorenzo', '/softskills', '/education', '/languages', '/dark', '/light', 'clear'];
+    const commandsText = ['/help', '/cv', '/projects', '/contact', '/lorenzo', '/softskills', '/education', '/languages', '/dark', '/light', '/snake', 'clear'];
 
     document.getElementById('enterButton').addEventListener('click', function() {
         document.getElementById('curtain').style.transform = 'translateY(-100%)';
@@ -142,6 +143,25 @@ const commands = [
         clearConsole();
      }
 
+     function snakeGame(){
+        clearConsole()
+        document.getElementById('snakeGame').style.display = 'grid'
+
+        userInput.disabled = true
+        canvas.style.display = 'block'
+        final.style.display = 'none'
+        quit.style.display = 'none'
+        replay.style.display = 'none'
+        score.innerHTML = 1
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        snake = [];
+        food = {};
+        direction = 'up';
+        main()
+     }
+
     userInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             const inputText = userInput.value.toLowerCase();
@@ -191,10 +211,13 @@ const commands = [
                     break;
                 case '/dark':
                     toggleDarkTheme();
-                    break;    
+                    break;   
+                case '/snake':
+                    snakeGame();
+                    break;
                 default:
                     output.innerHTML += `<div>Cette commande n'est pas reconnue. Tapez "/help" pour voir les commandes disponibles.</div>`;
             }
             userInput.value = '';
         }
-    });
+    })
