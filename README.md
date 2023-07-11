@@ -10,3 +10,4 @@ J'ai essayé de reproduire au mieux un terminal de commandes, on peut retrouver 
 <li>La touche Tab qui fonctionne de la même manière que dans un terminal</li>
 <li>La fonction clear qui permet de nettoyer l'écran</li>
 <li>Les fonctions /dark et /light qui permettent de changer le thème du terminal</li>
+<li>La fonction /snake qui lance un jeu snake codé en javascript</li>
