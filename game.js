@@ -8,7 +8,15 @@ const quit = document.getElementById('quit');
 // Variables
 let snake = []
 let food = {}
+let bomb = {}
+let goldFood = {}
+let rottenFood = {}
+let poisonnedFood = {}
+
 let direction = 'up'
+let itemCount = 0
+let scoreCount = 1
+let randomItem = Math.floor(Math.random()*11)
 
 function initSnake(){
     snake[0] = {
@@ -38,10 +46,20 @@ function drawSnake(snake){
     }
 }
 
+// Items
 function createFood(){
+    let x = Math.floor(Math.random()*canvas.width/10)*10
+    let y = Math.floor(Math.random()*canvas.height/10)*10
+    for(let i = 0; i < snake.length; i++){
+        while(x === snake[i].x && y === snake[i].y){
+            x = Math.floor(Math.random()*canvas.width/10)*10
+            y = Math.floor(Math.random()*canvas.height/10)*10
+        }
+    }
+
     let food = {
-        x: Math.floor(Math.random()*canvas.width/10)*10,
-        y: Math.floor(Math.random()*canvas.height/10)*10
+        x: x,
+        y: y
     }
     return food
 }
@@ -51,8 +69,98 @@ function drawFood(food){
     ctx.fillRect(food.x, food.y, 10, 10)
 }
 
+function createBomb(){
+    let x = Math.floor(Math.random()*canvas.width/10)*10
+    let y = Math.floor(Math.random()*canvas.height/10)*10
+    for(let i = 0; i < snake.length; i++){
+        while(x === snake[i].x && y === snake[i].y){
+            x = Math.floor(Math.random()*canvas.width/10)*10
+            y = Math.floor(Math.random()*canvas.height/10)*10
+        }
+    }
+
+    let bomb = {
+        x: x,
+        y: y
+    }
+    return bomb
+}
+
+function drawBomb(bomb){
+    ctx.fillStyle = 'grey'
+    ctx.fillRect(bomb.x, bomb.y, 10, 10)
+}
+
+function createGoldFood(){
+    let x = Math.floor(Math.random()*canvas.width/10)*10
+    let y = Math.floor(Math.random()*canvas.height/10)*10
+    for(let i = 0; i < snake.length; i++){
+        while(x === snake[i].x && y === snake[i].y){
+            x = Math.floor(Math.random()*canvas.width/10)*10
+            y = Math.floor(Math.random()*canvas.height/10)*10
+        }
+    }
+
+    let goldFood = {
+        x: x,
+        y: y
+    }
+    return goldFood
+}
+
+function drawGoldFood(goldFood){
+    ctx.fillStyle = 'yellow'
+    ctx.fillRect(goldFood.x, goldFood.y, 10, 10)
+}
+
+function createRottenFood(){
+    let x = Math.floor(Math.random()*canvas.width/10)*10
+    let y = Math.floor(Math.random()*canvas.height/10)*10
+    for(let i = 0; i < snake.length; i++){
+        while(x === snake[i].x && y === snake[i].y){
+            x = Math.floor(Math.random()*canvas.width/10)*10
+            y = Math.floor(Math.random()*canvas.height/10)*10
+        }
+    }
+
+    let rottenFood = {
+        x: x,
+        y: y
+    }
+    return rottenFood
+}
+
+function drawRottenFood(rottenFood){
+    ctx.fillStyle = '#717744'
+    ctx.fillRect(rottenFood.x, rottenFood.y, 10, 10)
+}
+
+function createPoisonnedFood(){
+    let x = Math.floor(Math.random()*canvas.width/10)*10
+    let y = Math.floor(Math.random()*canvas.height/10)*10
+    for(let i = 0; i < snake.length; i++){
+        while(x === snake[i].x && y === snake[i].y){
+            x = Math.floor(Math.random()*canvas.width/10)*10
+            y = Math.floor(Math.random()*canvas.height/10)*10
+        }
+    }
+
+    let poisonnedFood = {
+        x: x,
+        y:y
+    }
+    return poisonnedFood
+}
+
+function drawPoisonnedFood(poisonnedFood){
+    ctx.fillStyle = '#8367c7'
+    ctx.fillRect(poisonnedFood.x, poisonnedFood.y, 10, 10)
+}
+
+
+// Collisions
 function checkCollision(){
-    if(snake[0].x < 0 || snake[0].x > canvas.width || snake[0].y < 0 || snake[0].y > canvas.height){
+    if(snake[0].x < 0 || snake[0].x > canvas.width-10 || snake[0].y < 0 || snake[0].y > canvas.height - 10){
         console.log('collision murale')
         return true
     }
@@ -65,7 +173,6 @@ function checkCollision(){
             }
         }
     }
-
     else{
         return false
     }
@@ -79,10 +186,70 @@ function checkFoodCollision(){
         }
         ctx.clearRect(food.x, food.y, 10, 10)
         food = createFood()
-        score.innerHTML = snake.length - 1
+        scoreCount++
+        score.innerHTML = scoreCount
     }
 }
 
+function checkBombCollision(){
+    if(Object.keys(bomb).length !== 0){
+        if(snake[0].x === bomb.x && snake[0].y === bomb.y){
+            canvas.style.display = 'none'
+            final.style.display = 'block'
+            quit.style.display = 'block'
+            replay.style.display = 'block'
+            score.innerHTML = scoreCount
+            console.log('game over')
+        }
+    }
+}
+
+function checkGoldFoodCollision(){
+    if(Object.keys(goldFood).length !== 0){
+        if(snake[0].x === goldFood.x && snake[0].y === goldFood.y){
+            snake[snake.length] = {
+                x: snake[snake.length-1].x,
+                y: snake[snake.length-1].y
+            }
+            ctx.clearRect(goldFood.x, goldFood.y, 10, 10)
+            goldFood = {}
+            scoreCount += 3
+            score.innerHTML = scoreCount
+        }
+    }
+}
+
+function checkRottenFoodCollision(){
+    if(Object.keys(rottenFood).length !== 0){
+        if(snake[0].x === rottenFood.x && snake[0].y === rottenFood.y){
+            for(let i = 0; i < 3; i++){
+                snake[snake.length] = {
+                    x: snake[snake.length-1].x,
+                    y: snake[snake.length-1].y
+                }
+            }
+            ctx.clearRect(rottenFood.x, rottenFood.y, 10, 10)
+            rottenFood = {}
+            scoreCount += 1
+            score.innerHTML = scoreCount
+        }
+    }
+}
+
+function checkPoisonnedFoodCollision(){
+    if(Object.keys(poisonnedFood).length !== 0){
+        if(snake[0].x === poisonnedFood.x && snake[0].y === poisonnedFood.y){
+            snake.pop()
+            ctx.clearRect(poisonnedFood.x, poisonnedFood.y, 10, 10)
+            poisonnedFood = {}
+            scoreCount -= 1
+            score.innerHTML = scoreCount
+        }
+    }
+}
+
+
+// Game
 function updateGame(){
     if(!checkCollision()){
         if(direction === 'left'){
@@ -99,8 +266,81 @@ function updateGame(){
         }
         updateSnake()
         checkFoodCollision()
+        checkBombCollision()
+        checkGoldFoodCollision()
+        checkRottenFoodCollision()
+        checkPoisonnedFoodCollision()
         drawSnake(snake)
+
+        console.log(randomItem)
+
+        if(Object.keys(bomb).length === 0 && Object.keys(goldFood).length === 0 && Object.keys(rottenFood).length === 0 && Object.keys(poisonnedFood).length === 0){ 
+            if(scoreCount > 4 && randomItem === 1 || randomItem === 2){
+                bomb = createBomb()
+                itemCount = 0
+                randomItem = Math.floor(Math.random() * 11)
+            }
+    
+            else if(scoreCount > 4 && randomItem === 3){
+                goldFood = createGoldFood()
+                itemCount = 0
+                randomItem = Math.floor(Math.random() * 11)
+            }
+    
+            else if(scoreCount > 4 && randomItem === 4 || randomItem === 5 || randomItem === 6 || randomItem === 7){
+                rottenFood = createRottenFood()
+                itemCount = 0
+                randomItem = Math.floor(Math.random() * 11)
+            }
+    
+            else if(scoreCount > 4 &&  randomItem === 8 || randomItem === 9 || randomItem === 10){
+                poisonnedFood = createPoisonnedFood()
+                itemCount = 0
+                randomItem = Math.floor(Math.random() * 11)
+            }
+            else if(randomItem === 0){
+                itemCount = 0
+                randomItem = Math.floor(Math.random() * 11)
+            }
+        }
+
+        if(Object.keys(bomb).length !== 0 && itemCount > 80){
+            ctx.clearRect(bomb.x, bomb.y, 10, 10)
+            bomb = {}
+            itemCount = 0
+        }
+
+        else if(Object.keys(goldFood).length !== 0 && itemCount > 40){
+            ctx.clearRect(goldFood.x, goldFood.y, 10, 10)
+            goldFood = {}
+            itemCount = 0
+        }
+
+        else if(Object.keys(rottenFood).length !== 0 && itemCount > 120){
+            ctx.clearRect(rottenFood.x, rottenFood.y, 10, 10)
+            rottenFood = {}
+            itemCount = 0
+        }
+
+        else if(Object.keys(poisonnedFood).length !== 0 && itemCount > 100){
+            ctx.clearRect(poisonnedFood.x, poisonnedFood.y, 10, 10)
+            poisonnedFood = {}
+            itemCount = 0
+        }
+
+        else if(Object.keys(bomb).length === 0 && Object.keys(goldFood).length === 0 && Object.keys(rottenFood).length === 0 && Object.keys(poisonnedFood).length === 0 && itemCount > 100){
+            itemCount = 0
+        }
+
+        itemCount++
+        
         drawFood(food)
+        if(scoreCount > 4){
+            drawBomb(bomb)
+            drawGoldFood(goldFood)
+            drawRottenFood(rottenFood)
+            drawPoisonnedFood(poisonnedFood)
+        }
         setTimeout(updateGame, 100)
     }
     else{
@@ -108,7 +348,7 @@ function updateGame(){
         final.style.display = 'block'
         quit.style.display = 'block'
         replay.style.display = 'block'
-        score.innerHTML = snake.length - 1
+        score.innerHTML = scoreCount
         console.log('game over')
     }
 }
@@ -125,6 +365,7 @@ function main(){
     updateGame()
 }
 
+// Listeners
 document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowLeft' && direction != 'right'){
         event.preventDefault()
@@ -151,16 +392,23 @@ quit.addEventListener('click', function(){
 })
 
 replay.addEventListener('click', function(){
+    scoreCount = 1
+    itemCount = 0
+    randomItem = Math.floor(Math.random() * 11)
     canvas.style.display = 'block'
     final.style.display = 'none'
-    score.innerHTML = 1
+    score.innerHTML = scoreCount
     quit.style.display = 'none'
     replay.style.display = 'none'
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    snake = [];
-    food = {};
-    direction = 'up';
+    snake = []
+    food = {}
+    bomb = {}
+    goldFood = {}
+    rottenFood = {}
+    poisonnedFood = {}
+    direction = 'up'
     main()
 })
