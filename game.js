@@ -13,10 +13,14 @@ let goldFood = {}
 let rottenFood = {}
 let poisonnedFood = {}
 
+let mystery = 0
 let direction = 'up'
+let minSpeed = 85
+let actualSpeed = 85
+let maxSpeed = 35
 let isListening = true
 let itemCount = 0
-let scoreCount = 1
+let scoreCount = 49
 let randomItem = Math.floor(Math.random()*11)
 
 function initSnake(){
@@ -40,11 +44,40 @@ function updateSnake(){
 
 function drawSnake(snake){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
     for(let i = 0; i < snake.length; i++){
         ctx.fillStyle = 'green';
-        ctx.fillRect(snake[i].x, snake[i].y, 10, 10);
+        if(actualSpeed === maxSpeed){
+            if(mystery === 0 || mystery === 1){
+                ctx.fillStyle = 'red'
+            }
+            else if(mystery === 2 || mystery === 3){
+                ctx.fillStyle = 'violet'
+            }
+            else if(mystery === 4 || mystery === 5){
+                ctx.fillStyle = 'blue'
+            }
+            else if(mystery === 6 || mystery === 7){
+                ctx.fillStyle = 'cyan'
+            }
+            else if(mystery === 8 || mystery === 9){
+                ctx.fillStyle = 'lightgreen'
+            }
+            else if(mystery === 10 || mystery === 11){
+                ctx.fillStyle = 'yellow'
+            }
+            else if(mystery === 12 || mystery === 13){
+                ctx.fillStyle = 'orange'
+            }
+        }
+        ctx.fillRect(snake[i].x, snake[i].y, 10, 10)
     }
+    if(mystery === 13)
+        {
+            mystery = 0
+        }
+        else{
+            mystery++
+        }
 }
 
 // Items
@@ -162,14 +195,12 @@ function drawPoisonnedFood(poisonnedFood){
 // Collisions
 function checkCollision(){
     if(snake[0].x < 0 || snake[0].x > canvas.width-10 || snake[0].y < 0 || snake[0].y > canvas.height - 10){
-        console.log('collision murale')
         return true
     }
 
     else if(snake.length > 4){
         for(let i = 4; i < snake.length; i++){
             if(snake[0].x === snake[i].x && snake[0].y === snake[i].y){
-                console.log('collision queue')
                 return true
             }
         }
@@ -200,7 +231,6 @@ function checkBombCollision(){
             quit.style.display = 'block'
             replay.style.display = 'block'
             score.innerHTML = scoreCount
-            console.log('game over')
         }
     }
 }
@@ -273,8 +303,6 @@ function updateGame(){
         checkPoisonnedFoodCollision()
         drawSnake(snake)
 
-        console.log(randomItem)
-
         if(Object.keys(bomb).length === 0 && Object.keys(goldFood).length === 0 && Object.keys(rottenFood).length === 0 && Object.keys(poisonnedFood).length === 0){ 
             if(scoreCount > 4 && randomItem === 1 || randomItem === 2){
                 bomb = createBomb()
@@ -341,7 +369,14 @@ function updateGame(){
             drawRottenFood(rottenFood)
             drawPoisonnedFood(poisonnedFood)
         }
-        setTimeout(updateGame, 100)
+        
+        if(minSpeed - scoreCount <= maxSpeed){
+            actualSpeed = maxSpeed
+        }
+        else{
+            actualSpeed = minSpeed - scoreCount
+        }
+        setTimeout(updateGame, actualSpeed)
     }
     else{
         canvas.style.display = 'none'
@@ -349,7 +384,6 @@ function updateGame(){
         quit.style.display = 'block'
         replay.style.display = 'block'
         score.innerHTML = scoreCount
-        console.log('game over')
     }
 }
 
@@ -368,6 +402,7 @@ function main(){
 function resetGame(){
     scoreCount = 1
     itemCount = 0
+    actualSpeed = 85
     randomItem = Math.floor(Math.random() * 11)
     snake = []
     food = {}
@@ -383,7 +418,7 @@ function setTimeoutKey(){
     isListening = false
     setTimeout(() => {
         isListening = true
-    }, 70)
+    }, actualSpeed)
 }
 
 
