@@ -1,9 +1,9 @@
-let canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-const final = document.getElementById('gameOver');
-const score = document.getElementById('score');
-const replay = document.getElementById('replay');
-const quit = document.getElementById('quit');
+let canvas = document.getElementById('gameCanvas')
+const ctx = canvas.getContext('2d')
+const final = document.getElementById('gameOver')
+const score = document.getElementById('score')
+const replay = document.getElementById('replay')
+const quit = document.getElementById('quit')
 
 // Variables
 let snake = []
@@ -14,6 +14,7 @@ let rottenFood = {}
 let poisonnedFood = {}
 
 let direction = 'up'
+let isListening = true
 let itemCount = 0
 let scoreCount = 1
 let randomItem = Math.floor(Math.random()*11)
@@ -331,11 +332,10 @@ function updateGame(){
         else if(Object.keys(bomb).length === 0 && Object.keys(goldFood).length === 0 && Object.keys(rottenFood).length === 0 && Object.keys(poisonnedFood).length === 0 && itemCount > 100){
             itemCount = 0
         }
-
-        itemCount++
         
         drawFood(food)
         if(scoreCount > 4){
+            itemCount++
             drawBomb(bomb)
             drawGoldFood(goldFood)
             drawRottenFood(rottenFood)
@@ -365,44 +365,10 @@ function main(){
     updateGame()
 }
 
-// Listeners
-document.addEventListener('keydown', function(event){
-    if(event.key === 'ArrowLeft' && direction != 'right'){
-        event.preventDefault()
-        direction = 'left'
-    }
-    else if(event.key === 'ArrowUp' && direction != 'down'){
-        event.preventDefault()
-        direction = 'up'
-    }
-    else if(event.key === 'ArrowRight' && direction != 'left'){
-        event.preventDefault()
-        direction = 'right'
-    }
-    else if(event.key === 'ArrowDown' && direction != 'up'){
-        event.preventDefault()
-        direction = 'down'
-    }
-})
-
-quit.addEventListener('click', function(){
-    clearConsole()
-    document.getElementById('snakeGame').style.display = 'none'
-    userInput.disabled = false
-})
-
-replay.addEventListener('click', function(){
+function resetGame(){
     scoreCount = 1
     itemCount = 0
     randomItem = Math.floor(Math.random() * 11)
-    canvas.style.display = 'block'
-    final.style.display = 'none'
-    score.innerHTML = scoreCount
-    quit.style.display = 'none'
-    replay.style.display = 'none'
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
     snake = []
     food = {}
     bomb = {}
@@ -410,5 +376,59 @@ replay.addEventListener('click', function(){
     rottenFood = {}
     poisonnedFood = {}
     direction = 'up'
+}
+
+// Listeners
+function setTimeoutKey(){
+    isListening = false
+    setTimeout(() => {
+        isListening = true
+    }, 70)
+}
+
+
+document.addEventListener('keydown', function(event){
+    if(!isListening){
+        return
+    }
+
+    if(event.key === 'ArrowLeft' && direction != 'right'){
+        event.preventDefault()
+        direction = 'left'
+        setTimeoutKey()
+    }
+    else if(event.key === 'ArrowUp' && direction != 'down'){
+        event.preventDefault()
+        direction = 'up'
+        setTimeoutKey()
+    }
+    else if(event.key === 'ArrowRight' && direction != 'left'){
+        event.preventDefault()
+        direction = 'right'
+        setTimeoutKey()
+    }
+    else if(event.key === 'ArrowDown' && direction != 'up'){
+        event.preventDefault()
+        direction = 'down'
+        setTimeoutKey()
+    }
+})
+
+
+quit.addEventListener('click', function(){
+    resetGame()
+    clearConsole()
+    document.getElementById('snakeGame').style.display = 'none'
+    userInput.disabled = false
+})
+
+replay.addEventListener('click', function(){
+    resetGame()
+    canvas.style.display = 'block'
+    final.style.display = 'none'
+    score.innerHTML = scoreCount
+    quit.style.display = 'none'
+    replay.style.display = 'none'
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     main()
 })
