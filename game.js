@@ -20,7 +20,7 @@ let actualSpeed = 85
 let maxSpeed = 35
 let isListening = true
 let itemCount = 0
-let scoreCount = 49
+let scoreCount = 1
 let randomItem = Math.floor(Math.random()*11)
 
 function initSnake(){
