@@ -113,6 +113,11 @@ function createBomb(){
         }
     }
 
+    while(x===food.x && y===food.y){
+        x = Math.floor(Math.random()*canvas.width/10)*10
+        y = Math.floor(Math.random()*canvas.height/10)*10
+    }
+
     let bomb = {
         x: x,
         y: y
@@ -133,6 +138,11 @@ function createGoldFood(){
             x = Math.floor(Math.random()*canvas.width/10)*10
             y = Math.floor(Math.random()*canvas.height/10)*10
         }
+    }
+
+    while(x===food.x && y===food.y){
+        x = Math.floor(Math.random()*canvas.width/10)*10
+        y = Math.floor(Math.random()*canvas.height/10)*10
     }
 
     let goldFood = {
@@ -157,6 +167,11 @@ function createRottenFood(){
         }
     }
 
+    while(x===food.x && y===food.y){
+        x = Math.floor(Math.random()*canvas.width/10)*10
+        y = Math.floor(Math.random()*canvas.height/10)*10
+    }
+
     let rottenFood = {
         x: x,
         y: y
@@ -177,6 +192,11 @@ function createPoisonnedFood(){
             x = Math.floor(Math.random()*canvas.width/10)*10
             y = Math.floor(Math.random()*canvas.height/10)*10
         }
+    }
+
+    while(x===food.x && y===food.y){
+        x = Math.floor(Math.random()*canvas.width/10)*10
+        y = Math.floor(Math.random()*canvas.height/10)*10
     }
 
     let poisonnedFood = {
