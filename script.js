@@ -95,11 +95,12 @@ const commands = [
 
     function softskills(){
         let softskillsList = '<p>Voici mes diff&eacute;rents Softs Skills :<br><ol>';
-        softskillsList += '<li><p><b>Curieux</b> : Lorsqu’un sujet me passionne, je suis très curieux d’en apprendre plus et très enthousiaste de sortir des sentiers battus. Évidemment comme tout le monde j’ai des préférences, mais découvrir un nouvel aspect d’un sujet n’est jamais une perte de temps pour moi.</li><br>'
+        softskillsList += '<li><p><b>Gestion du stress</b> : Je suis quelqu’un de très calme, ce qui me permet de rester concentré même dans les situations les plus stressantes. Je suis capable de prendre du recul et de réfléchir à la situation pour trouver une solution.</li><br>'
         softskillsList += '<li><p><b>Réaliste</b> mais ambitieux : Bien que je sois très réaliste et rationnel sur mon travail, je suis quelqu’un qui voit les choses en grand et qui ne les fait que très rarement à moitié (lorsque le temps nous manque). Je ne recule pas devant le moindre obstacle et je peux persévérer des heures même si je n’en vois pas le bout.</li><br>'
         softskillsList += '<li><p><b>Travail en équipe</b> : Je suis quelqu’un de plutôt calme, ce qui me permet d’écouter mes coéquipiers sans vouloir en faire qu’à ma tête.</li><br>'
         softskillsList += '<li><p><b>Indépendance</b> : J’aime me retrouver seul pour me ressourcer et travailler de manière indépendante me fait du bien. J’arrive à me gérer sans avoir besoin d\'une supervision constante. Le fait d’être seul me permet de me concentrer davantage.</li><br>'
         softskillsList += '<li><p><b>Adaptabilité</b> : Mon calme fait que je ne suis que très peu affecté par mes émotions, ce qui me permet de travailler sous pression efficacement. Bien que j’ai des préférences, je peux m’adapter à tout. Que cela soit en termes de coéquipiers, de tâches…</li>'
+        softskillsList += '<li><p><b>Curieux</b> : Lorsqu’un sujet me passionne, je suis très curieux d’en apprendre plus et très enthousiaste de sortir des sentiers battus. Évidemment comme tout le monde j’ai des préférences, mais découvrir un nouvel aspect d’un sujet n’est jamais une perte de temps pour moi.</li><br>'
         output.innerHTML += softskillsList;
     }
 
