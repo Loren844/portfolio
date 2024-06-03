@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Portfolio de Lorenzo BALADIER</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="icon" href="icon.png" type="image/png">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Portfolio de Lorenzo BALADIER</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" href="icon.png" type="image/png">
+	</head>
 <body class = "theme-dark">
 	<div id="curtain">
 		<video id="videoBackground" autoplay muted loop>
@@ -24,8 +26,8 @@
 	  
 	<div id="terminal">
 		<div class="terminal-header">
-			<div class="button close"></div>
-			<div class="button minimize"></div>
+			<div id="quitButton" class="button close"></div>
+			<div id='closeButton' class="button minimize"></div>
 			<div class="button expand"></div>
 			<span>Portfolio de Lorenzo BALADIER</span>
 		</div>
@@ -45,6 +47,9 @@
 				<button id="quit" class="buttonGame">Quitter</button>
 			  </div>
 		</div>
+	</div>
+	<div id="easter-egg">
+		<img src="https://media.larepubliquedespyrenees.fr/10795604/1000x625/1l6a7553.jpg?v=1651556228" id="icon" alt="icon">
 	</div>
 	<script src="script.js"></script>
 	<script src="game.js"></script>
