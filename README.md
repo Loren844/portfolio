@@ -1,7 +1,7 @@
 <h1>Portfolio intéractif</h1>
 <h3>Description : </h3>
 l'intéresse.
-Ce portfolio représente un terminal de commandes, à partir duquel l'utilisateur peut naviguer simplement en ecécutant les commandes qui
+Ce portfolio représente un terminal de commandes, à partir duquel l'utilisateur peut naviguer simplement en exécutant les commandes souhaitées.
 <h3>Utilité :</h3>
 Un portfolio est de plus en plus utilisé et demandé dans le monde du travail. Cela permet de donner un aperçu de ce que l'on sait faire et de regrouper plusieurs informations ensemble.
 <h3>Fonctionnalités :</h3>
