@@ -108,23 +108,23 @@ const commands = [
         "│   ├── programming-languages<br>" +
         "│   │   ├── Java                [<span style=\"color: green;\">██████████████████</span>..] 90%<br>" +
         "│   │   ├── Python              [<span style=\"color: green;\">████████████████</span>....] 80%<br>" +
-        "│   │   ├── C/C++               [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   ├── C/C++               [<span style=\"color: green;\">█████████████</span>.......] 65%<br>" +
         "│   │   ├── JavaScript/TS       [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
         "│   │   ├── SQL                 [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
-        "│   │   └── PHP                 [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
+        "│   │   └── PHP                 [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
         "│   ├── web-development<br>" +
         "│   │   ├── HTML                [<span style=\"color: green;\">██████████████</span>......] 70%<br>" +
-        "│   │   ├── CSS                 [<span style=\"color: green;\">██████████████</span>......] 70%<br>" +
-        "│   │   ├── NodeJS              [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
-        "│   │   ├── Bootstrap           [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
+        "│   │   ├── CSS                 [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   ├── NodeJS              [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   ├── Bootstrap           [<span style=\"color: green;\">████████████</span>........] 50%<br>" +
+        "│   │   ├── Angular             [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
         "│   │   ├── TailWind            [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
-        "│   │   ├── Angular             [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
         "│   │   └── ViteJS              [<span style=\"color: red;\">██████</span>..............] 30%<br>" +
         "│   ├── tools-and-frameworks<br>" +
-        "│   │   ├── Git                 [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
-        "│   │   ├── Maven               [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
+        "│   │   ├── Git                 [<span style=\"color: green;\">██████████████</span>......] 70%<br>" +
+        "│   │   ├── Maven               [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
+        "│   │   ├── Bash                [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
         "│   │   ├── Spring              [<span style=\"color: red;\">██████</span>..............] 30%<br>" +
-        "│   │   ├── Bash                [<span style=\"color: red;\">██████</span>..............] 30%<br>" +
         "│   │   └── Docker              [<span style=\"color: red;\">████</span>................] 20%<br>" +
         "│<br>" +
         "└── soft-skills<br>" +
