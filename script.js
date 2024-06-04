@@ -2,6 +2,9 @@ const userInput = document.getElementById('userInput');
 const output = document.getElementById('output');
 const closeButton = document.getElementById('closeButton');
 const quitButton = document.getElementById('quitButton');
+const expandButton = document.getElementById('expandButton');
+
+var isExpanded = false;
 
 const commands = [
 	{command: '/help', description: 'Afficher la liste des commandes disponibles'},
@@ -209,9 +212,28 @@ const commands = [
         document.getElementById('easter-egg').style.display = 'block';
     }
 
+    function expandTerminal() {
+        if(isExpanded) {
+            document.getElementById('terminal').style.width = '90%';
+            document.getElementById('terminal').style.height = '70%';
+            document.getElementById('terminal').style.maxWidth = '60vw';
+            document.getElementById('terminal').style.maxHeight = '60vh';
+            isExpanded = false;
+        }
+        else {
+            document.getElementById('terminal').style.width = '100%';
+            document.getElementById('terminal').style.height = '100%';
+            document.getElementById('terminal').style.maxWidth = '100%';
+            document.getElementById('terminal').style.maxHeight = '100%';
+            isExpanded = true;
+        }
+    }
+
     closeButton.addEventListener('click', closeterminal);
 
     quitButton.addEventListener('click', quitTerminal);
+
+    expandButton.addEventListener('click', expandTerminal);
 
 
     userInput.addEventListener('keydown', function(event) {
