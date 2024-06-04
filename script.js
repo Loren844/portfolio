@@ -18,7 +18,7 @@ const commands = [
     {command: "/dark", description: "Passer au th&egrave;me sombre"},
     {command: "/light", description: "Passer au th&egrave;me clair"},
     {command: "/snake", description: "Jouer à un jeu snake codé par moi-même"},
-    {command: "echo", description: "Renvoie le message tapé par l'utilisateur"},
+    {command: "echo", description: "Renvoie le message écrit par l'utilisateur"},
     {command: 'clear', description: 'Effacer la console'}]
 
     const commandsText = ['/help', '/cv', '/projects', '/contact', '/aboutme', '/skills', '/education', '/work', '/dark', '/light', '/snake', 'echo', 'clear'];
