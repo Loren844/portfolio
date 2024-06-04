@@ -18,9 +18,10 @@ const commands = [
     {command: "/dark", description: "Passer au th&egrave;me sombre"},
     {command: "/light", description: "Passer au th&egrave;me clair"},
     {command: "/snake", description: "Jouer à un jeu snake codé par moi-même"},
+    {command: "echo", description: "Renvoie le message tapé par l'utilisateur"},
     {command: 'clear', description: 'Effacer la console'}]
 
-    const commandsText = ['/help', '/cv', '/projects', '/contact', '/aboutme', '/skills', '/education', '/work', '/dark', '/light', '/snake', 'clear'];
+    const commandsText = ['/help', '/cv', '/projects', '/contact', '/aboutme', '/skills', '/education', '/work', '/dark', '/light', '/snake', 'echo', 'clear'];
 
     document.getElementById('enterButton').addEventListener('click', function() {
         document.getElementById('curtain').style.transform = 'translateY(-100%)';
@@ -288,6 +289,10 @@ const commands = [
                     break;   
                 case '/snake':
                     snakeGame();
+                    break;
+                case 'echo':
+                    const message = inputArray.slice(1).join(' ');
+                    output.innerHTML = `<div>${message}</div>`;
                     break;
                 default:
                     output.innerHTML += `<div>Cette commande n'est pas reconnue. Tapez "/help" pour voir les commandes disponibles.</div>`;
