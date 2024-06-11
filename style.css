@@ -243,6 +243,10 @@ div {
 	width: 90%;
 }
 
+#easter-egg > img {
+	width : 100%;
+}
+
 /*snake game*/
 #snakeGame {
 	display: none;
