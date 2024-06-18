@@ -433,7 +433,6 @@ function resetGame(){
     direction = 'up'
 }
 
-/*
 // Listeners
 function setTimeoutKey(){
     isListening = false
@@ -441,7 +440,6 @@ function setTimeoutKey(){
         isListening = true
     }, actualSpeed)
 }
-*/
 
 document.addEventListener('keydown', function(event){
     if(!isListening){
