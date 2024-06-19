@@ -11,6 +11,11 @@ body {
 	color: #fff;
 }
 
+.skills{
+	margin-bottom: 2px;
+	display: inline-block;
+}
+
 #terminal {
 	position: absolute;
 	top: 50%;
