@@ -105,30 +105,31 @@ const commands = [
     }
 
     // Script pour la fonction "skills"
-    function skills() {
+        function skills() {
         var message =
-        "<pre>├── hard-skills<br>" +
+        "<pre><b>Lorenzo</b><br>" +
+        "├── hard-skills<br>" +
         "│   ├── programming-languages<br>" +
-        "│   │   ├── Java                [<span style=\"color: green;\">██████████████████</span>..] 90%<br>" +
-        "│   │   ├── Python              [<span style=\"color: green;\">████████████████</span>....] 80%<br>" +
-        "│   │   ├── C/C++               [<span style=\"color: green;\">█████████████</span>.......] 65%<br>" +
-        "│   │   ├── JavaScript/TS       [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
-        "│   │   ├── SQL                 [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
-        "│   │   └── PHP                 [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
+        "│   │   ├── Java                [<span class=\"skills\" style=\"color: green;\">██████████████████</span>..] 90%<br>" +
+        "│   │   ├── Python              [<span class=\"skills\" style=\"color: green;\">████████████████</span>....] 80%<br>" +
+        "│   │   ├── C/C++               [<span class=\"skills\" style=\"color: green;\">█████████████</span>.......] 65%<br>" +
+        "│   │   ├── JavaScript/TS       [<span class=\"skills\" style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   ├── SQL                 [<span class=\"skills\" style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   └── PHP                 [<span class=\"skills\" style=\"color: orange;\">██████████</span>..........] 50%<br>" +
         "│   ├── web-development<br>" +
-        "│   │   ├── HTML                [<span style=\"color: green;\">██████████████</span>......] 70%<br>" +
-        "│   │   ├── CSS                 [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
-        "│   │   ├── NodeJS              [<span style=\"color: green;\">████████████</span>........] 60%<br>" +
-        "│   │   ├── Bootstrap           [<span style=\"color: green;\">████████████</span>........] 50%<br>" +
-        "│   │   ├── Angular             [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
-        "│   │   ├── TailWind            [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
-        "│   │   └── ViteJS              [<span style=\"color: red;\">██████</span>..............] 30%<br>" +
-        "│   ├── tools-and-frameworks<br>" +
-        "│   │   ├── Git                 [<span style=\"color: green;\">██████████████</span>......] 70%<br>" +
-        "│   │   ├── Maven               [<span style=\"color: orange;\">██████████</span>..........] 50%<br>" +
-        "│   │   ├── Bash                [<span style=\"color: orange;\">████████</span>............] 40%<br>" +
-        "│   │   ├── Spring              [<span style=\"color: red;\">██████</span>..............] 30%<br>" +
-        "│   │   └── Docker              [<span style=\"color: red;\">████</span>................] 20%<br>" +
+        "│   │   ├── HTML                [<span class=\"skills\" style=\"color: green;\">██████████████</span>......] 70%<br>" +
+        "│   │   ├── CSS                 [<span class=\"skills\" style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   ├── NodeJS              [<span class=\"skills\" style=\"color: green;\">████████████</span>........] 60%<br>" +
+        "│   │   ├── Bootstrap           [<span class=\"skills\" style=\"color: green;\">████████████</span>........] 50%<br>" +
+        "│   │   ├── Angular             [<span class=\"skills\" style=\"color: orange;\">██████████</span>..........] 50%<br>" +
+        "│   │   ├── TailWind            [<span class=\"skills\" style=\"color: orange;\">████████</span>............] 40%<br>" +
+        "│   │   └── ViteJS              [<span class=\"skills\" style=\"color: red;\">██████</span>..............] 30%<br>" +
+        "│   └── tools-and-frameworks<br>" +
+        "│       ├── Git                 [<span class=\"skills\" style=\"color: green;\">██████████████</span>......] 70%<br>" +
+        "│       ├── Maven               [<span class=\"skills\" style=\"color: orange;\">██████████</span>..........] 50%<br>" +
+        "│       ├── Bash                [<span class=\"skills\" style=\"color: orange;\">████████</span>............] 40%<br>" +
+        "│       ├── Spring              [<span class=\"skills\" style=\"color: red;\">██████</span>..............] 30%<br>" +
+        "│       └── Docker              [<span class=\"skills\" style=\"color: red;\">████</span>................] 20%<br>" +
         "│<br>" +
         "└── soft-skills<br>" +
         "    ├── Autonomie<br>" +
