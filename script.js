@@ -90,8 +90,7 @@ const commands = [
     // Script pour la fonction "contact"
     function contact() {
         var message = 'Vous pouvez me contacter par les moyens ci-dessous :' +
-        '<br><br>Mail : lobaladier@gmail.com <br>' + 
-        'Tel : +33 7 62 07 67 65<br>' +
+        '<br><br>Mail : lorenzo.baladier@etu.unice.fr <br>' + 
         '<a href="https://www.linkedin.com/in/lorenzo-baladier/" target="_blank">Voir mon LinkedIn</a><br>' +
         '<a href="https://github.com/Loren844" target="_blank">Voir mon GitHub</a>';
         output.innerHTML = message;
