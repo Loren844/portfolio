@@ -438,7 +438,7 @@ function setTimeoutKey(){
     isListening = false
     setTimeout(() => {
         isListening = true
-    }, actualSpeed)
+    }, 80)
 }
 
 document.addEventListener('keydown', function(event){
@@ -449,22 +449,22 @@ document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowLeft' && direction != 'right'){
         event.preventDefault()
         direction = 'left'
-        //setTimeoutKey()
+        setTimeoutKey()
     }
     else if(event.key === 'ArrowUp' && direction != 'down'){
         event.preventDefault()
         direction = 'up'
-        //setTimeoutKey()
+        setTimeoutKey()
     }
     else if(event.key === 'ArrowRight' && direction != 'left'){
         event.preventDefault()
         direction = 'right'
-        //setTimeoutKey()
+        setTimeoutKey()
     }
     else if(event.key === 'ArrowDown' && direction != 'up'){
         event.preventDefault()
         direction = 'down'
-        //setTimeoutKey()
+        setTimeoutKey()
     }
 })
 
