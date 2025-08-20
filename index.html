@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Portfolio | Lorenzo BALADIER</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="icon" href="icon.png" type="image/png">
-	</head>
-<body class = "theme-dark">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Portfolio | Lorenzo BALADIER</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="icon.png" type="image/png">
+	<script src="lang.js"></script>
+	<script src="script.js" defer></script>
+</head>
+
+<body class="theme-dark">
 	<div id="curtain">
 		<video id="videoBackground" autoplay muted loop>
 			<source src="code.mp4" type="video/mp4">
-		  </video>
-		  <div id="videoOverlay"></div>
-		  <div id="content">
+		</video>
+		<div id="videoOverlay"></div>
+		<div id="content">
 			<h1>Portfolio de Lorenzo BALADIER</h1>
 			<button id="enterButton">
 				<span class="shadow"></span>
 				<span class="edge"></span>
 				<span class="front text"> Entrer </span>
-			  </button>
-			</div>
-		  </div>
-	  </div>
-	  
+			</button>
+		</div>
+	</div>
+	</div>
+
+	<div id="lang-select" style="position:absolute;top:10px;right:10px;z-index:1000;">
+		<label id="language-label" for="language">Langue :</label>
+		<select id="language">
+			<option value="fr">Français</option>
+			<option value="en">English</option>
+		</select>
+	</div>
+
 	<div id="terminal">
 		<div class="terminal-header">
 			<div id="quitButton" class="button close"></div>
@@ -33,7 +45,7 @@
 		</div>
 		<div class="terminal-body">
 			<p>Bienvenue dans mon portfolio! Tapez <i>/help</i> pour voir les commandes disponibles.</p>
-            <label for="userInput" class="label-text">C:\Users\blorenzo></label>
+			<label for="userInput" class="label-text" style="white-space: nowrap;">C:\Users\blorenzo&gt;</label>
 			<input type="text" id="userInput" placeholder="Veuillez saisir une commande...">
 			<div class="suggestions">
 				<ul id="suggestions-list"></ul>
@@ -45,18 +57,19 @@
 				<p>Score: <span id="score">1</span></p>
 				<button id="replay" class="buttonGame">Rejouer</button>
 				<button id="quit" class="buttonGame">Quitter</button>
-			  </div>
+			</div>
 		</div>
 	</div>
 	<div id="easter-egg">
-		<img src="https://www.parismatch.com/lmnr/var/pm/public/media/image/2022/03/05/06/Quand-Jean-Lassalle-se-vante-d-avoir-refuse-d-etre-ministre-de-la-Defense-de-Sarkozy.jpg?VersionId=JFzL.1423srP3tyyN.dB0vjG0KQ5h4D" id="icon" alt="icon">
+		<img src="https://picsum.photos/1920/1080" id="icon" alt="icon">
 	</div>
 	<script src="script.js"></script>
 	<script src="game.js"></script>
-    <script>
-        window.onload = function() {
-            document.getElementById('userInput').focus();
-        };
-    </script>    
+	<script>
+		window.onload = function () {
+			document.getElementById('userInput').focus();
+		};
+	</script>
 </body>
+
 </html>

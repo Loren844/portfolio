@@ -11,7 +11,12 @@ body {
 	color: #fff;
 }
 
-.skills{
+.theme-light {
+	background-color: rgb(207, 207, 207);
+	color: #000;
+}
+
+.skills {
 	margin-bottom: 2px;
 	display: inline-block;
 }
@@ -105,7 +110,7 @@ body {
 	height: calc(100% - 30px);
 	padding: 10px;
 	overflow-y: auto;
-	
+
 }
 
 /*dark-theme*/
@@ -248,8 +253,8 @@ div {
 	width: 90%;
 }
 
-#easter-egg > img {
-	width : 100%;
+#easter-egg>img {
+	width: 100%;
 }
 
 /*snake game*/
@@ -357,7 +362,7 @@ button:focus:not(:focus-visible) {
 		margin: 2rem;
 	}
 
-	.terminal-header > span {
+	.terminal-header>span {
 		font-size: 14px;
 	}
 
@@ -385,18 +390,18 @@ button:focus:not(:focus-visible) {
 		padding-right: 5px;
 	}
 
-	#easter-egg > img {
+	#easter-egg>img {
 		width: 100%;
 	}
 }
 
-@media screen and (max-height: 600px){
+@media screen and (max-height: 600px) {
 
 	label {
 		font-size: 14px;
 	}
 
-	.terminal-header > span {
+	.terminal-header>span {
 		font-size: 14px;
 	}
 
@@ -415,7 +420,7 @@ button:focus:not(:focus-visible) {
 		font-size: 14px;
 	}
 
-	.terminal-body  {
+	.terminal-body {
 		font-size: 14px;
 	}
 
@@ -424,7 +429,7 @@ button:focus:not(:focus-visible) {
 		padding-right: 5px;
 	}
 
-	#easter-egg > img {
+	#easter-egg>img {
 		width: 100%;
 	}
 }
