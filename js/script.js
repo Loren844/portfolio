@@ -18,6 +18,7 @@ let currentLang = 'fr';
 
 let isExpanded = false;
 let hackerUnlocked = false;
+let barrelrollUnlocked = false;
 
 function getCommands(lang) {
     const list = [
@@ -37,6 +38,9 @@ function getCommands(lang) {
     ];
     if (hackerUnlocked) {
         list.push({ command: '/hacker', description: translations[lang].hacker });
+    }
+    if (barrelrollUnlocked) {
+        list.push({ command: '/barrelroll', description: translations[lang].barrelroll });
     }
     return list;
 }
@@ -154,13 +158,25 @@ function unlockHacker() {
     }
     hackerUnlocked = true;
     commands = getCommands(currentLang);
-    showAchievement();
+    showAchievement(translations[currentLang].hackerUnlocked);
 }
 
-function showAchievement() {
+function doBarrelRoll() {
+    const terminal = document.getElementById('terminal');
+    terminal.classList.add('barrel-roll');
+    setTimeout(() => terminal.classList.remove('barrel-roll'), 1000);
+    if (barrelrollUnlocked) {
+        return;
+    }
+    barrelrollUnlocked = true;
+    commands = getCommands(currentLang);
+    showAchievement(translations[currentLang].barrelrollUnlocked);
+}
+
+function showAchievement(message) {
     const banner = document.createElement('div');
     banner.className = 'achievement';
-    banner.innerHTML = `<span class="achievement-icon">&#127942;</span> ${translations[currentLang].hackerUnlocked}`;
+    banner.innerHTML = `<span class="achievement-icon">&#127942;</span> ${message}`;
     document.body.appendChild(banner);
     setTimeout(() => banner.classList.add('achievement-hide'), 4000);
     setTimeout(() => banner.remove(), 4600);
@@ -228,6 +244,13 @@ userInput.addEventListener('keydown', function (event) {
         const inputArray = inputText.split(' ');
         const command = inputArray[0];
         output.innerHTML += `<div class="command">${inputText}</div>`;
+
+        if (inputText === 'do a barrel roll') {
+            doBarrelRoll();
+            userInput.value = '';
+            return;
+        }
+
         switch (command) {
             case '/help':
                 displayCommands();
@@ -270,6 +293,13 @@ userInput.addEventListener('keydown', function (event) {
             case '/hacker':
                 if (hackerUnlocked) {
                     setTheme('hacker');
+                } else {
+                    output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
+                }
+                break;
+            case '/barrelroll':
+                if (barrelrollUnlocked) {
+                    doBarrelRoll();
                 } else {
                     output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
                 }

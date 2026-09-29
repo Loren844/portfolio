@@ -68,7 +68,9 @@ const translations = {
         langCmd: "Changer la langue : /lang fr, /lang en ou /lang it",
         langUsage: "Usage : /lang fr, /lang en ou /lang it",
         hacker: "Activer le thème hacker (débloqué)",
-        hackerUnlocked: "Bravo ! Succès débloqué : thème Hacker"
+        hackerUnlocked: "Bravo ! Succès débloqué : thème Hacker",
+        barrelroll: "Faire faire un tonneau au terminal (débloqué)",
+        barrelrollUnlocked: "Bravo ! Succès débloqué : Barrel Roll"
     },
     en: {
         title: "Lorenzo BALADIER's Portfolio",
@@ -137,7 +139,9 @@ const translations = {
         langCmd: "Change the language: /lang fr, /lang en or /lang it",
         langUsage: "Usage: /lang fr, /lang en or /lang it",
         hacker: "Enable the hacker theme (unlocked)",
-        hackerUnlocked: "Well done! Achievement unlocked: Hacker theme"
+        hackerUnlocked: "Well done! Achievement unlocked: Hacker theme",
+        barrelroll: "Make the terminal do a barrel roll (unlocked)",
+        barrelrollUnlocked: "Well done! Achievement unlocked: Barrel Roll"
     },
     it: {
         title: "Portfolio di Lorenzo BALADIER",
@@ -206,6 +210,8 @@ const translations = {
         langCmd: "Cambia la lingua: /lang fr, /lang en o /lang it",
         langUsage: "Uso: /lang fr, /lang en o /lang it",
         hacker: "Attiva il tema hacker (sbloccato)",
-        hackerUnlocked: "Bravo! Obiettivo sbloccato: tema Hacker"
+        hackerUnlocked: "Bravo! Obiettivo sbloccato: tema Hacker",
+        barrelroll: "Fai fare un tonneau al terminale (sbloccato)",
+        barrelrollUnlocked: "Bravo! Obiettivo sbloccato: Barrel Roll"
     }
 };

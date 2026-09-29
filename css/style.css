@@ -34,6 +34,19 @@ body {
 	overflow: hidden;
 }
 
+.barrel-roll {
+	animation: barrelRoll 1s ease-in-out;
+}
+
+@keyframes barrelRoll {
+	from {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
 .terminal-body {
 	font-size: 16px;
 }
@@ -310,7 +323,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.68);
 	pointer-events: none;
 	z-index: -1;
 }
@@ -462,20 +475,24 @@ button {
 	width: 100%;
 	height: 100%;
 	border-radius: 12px;
-	background: linear-gradient(to left, hsl(340deg 100% 16%) 0%, hsl(340deg 100% 32%) 8%, hsl(340deg 100% 32%) 92%, hsl(340deg 100% 16%) 100%);
+	background: linear-gradient(to left, hsl(190deg 100% 16%) 0%, hsl(190deg 100% 30%) 8%, hsl(190deg 100% 30%) 92%, hsl(190deg 100% 16%) 100%);
 }
 
 .front {
 	display: block;
 	position: relative;
-	padding: 12px 27px;
+	padding: 12px 30px;
 	border-radius: 12px;
 	font-size: 1.1rem;
-	color: white;
-	background: hsl(345deg 100% 47%);
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #042630;
+	background: hsl(187deg 92% 50%);
+	box-shadow: 0 0 18px rgba(0, 224, 255, 0.5);
 	will-change: transform;
 	transform: translateY(-4px);
-	transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+	transition: transform 600ms cubic-bezier(.3, .7, .4, 1), box-shadow 250ms ease;
 }
 
 button:hover {
@@ -484,11 +501,12 @@ button:hover {
 
 button:hover .front {
 	transform: translateY(-6px);
-	transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+	box-shadow: 0 0 28px rgba(0, 224, 255, 0.8);
+	transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5), box-shadow 250ms ease;
 }
 
 button:active .front {
-	transform: translatseY(-2px);
+	transform: translateY(-2px);
 	transition: transform 34ms;
 }
 
