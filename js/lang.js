@@ -65,8 +65,8 @@ const translations = {
         cv_link: "assets/CV_Lorenzo_BALADIER_fr.pdf",
         replay: "Rejouer",
         quit: "Quitter",
-        langCmd: "Changer la langue : /lang fr ou /lang en",
-        langUsage: "Usage : /lang fr ou /lang en",
+        langCmd: "Changer la langue : /lang fr, /lang en ou /lang it",
+        langUsage: "Usage : /lang fr, /lang en ou /lang it",
         hacker: "Activer le thème hacker (débloqué)",
         hackerUnlocked: "Bravo ! Succès débloqué : thème Hacker"
     },
@@ -134,9 +134,78 @@ const translations = {
         cv_link: "assets/CV_Lorenzo_BALADIER_en.pdf",
         replay: "Replay",
         quit: "Quit",
-        langCmd: "Change the language: /lang fr or /lang en",
-        langUsage: "Usage: /lang fr or /lang en",
+        langCmd: "Change the language: /lang fr, /lang en or /lang it",
+        langUsage: "Usage: /lang fr, /lang en or /lang it",
         hacker: "Enable the hacker theme (unlocked)",
         hackerUnlocked: "Well done! Achievement unlocked: Hacker theme"
+    },
+    it: {
+        title: "Portfolio di Lorenzo BALADIER",
+        description: "Benvenuto nel mio portfolio! Digita /help per vedere i comandi disponibili.",
+        enter: "Entra",
+        input: "Inserisci un comando...",
+        help: "Mostra l'elenco dei comandi disponibili",
+        cv: "Scarica il mio CV",
+        projects: "Mostra i miei progetti",
+        contact: "Contattami / Vedi i miei link utili",
+        aboutme: "Scopri di più su di me",
+        education: "Mostra il mio percorso scolastico",
+        work: "Mostra le mie esperienze professionali",
+        dark: "Passa al tema scuro",
+        light: "Passa al tema chiaro",
+        snake: "Gioca a uno snake programmato da me",
+        echo: "Restituisce il messaggio scritto dall'utente",
+        clear: "Pulisci la console",
+        contactMsg: `Puoi contattarmi tramite i mezzi qui sotto:<br><br>
+            Email: lobaladier@gmail.com <br>
+            <a href="https://www.linkedin.com/in/lorenzo-baladier/" target="_blank">Vedi il mio LinkedIn</a><br>
+            <a href="https://github.com/Loren844" target="_blank">Vedi il mio GitHub</a>`,
+        aboutMsg: `<p>
+                Sono <strong>Lorenzo BALADIER</strong>, studente di informatica al Polytech Nice - Sophia Antipolis. Appassionato di sviluppo software e nuove tecnologie, padroneggio diversi linguaggi di programmazione come <strong>Rust, Python, Java</strong> e <strong>C/C++</strong>, e ho un'esperienza concreta nella progettazione di applicazioni, nell'automazione dei test e nello sviluppo di soluzioni affidabili e performanti.
+            </p>
+            <br>
+            <p>
+                Durante le mie esperienze precedenti, in particolare presso <strong>Ampere Software Technology (Gruppo Renault)</strong> e <strong>European Systems Integration</strong>, ho partecipato a progetti vari, dall'automazione dei test alla creazione di strumenti software integrati in pipeline CI/CD, utilizzando Docker e API (GraphQL, REST).
+            </p>
+            <br>
+            <p>
+                Mi piace affrontare sfide tecniche, esplorare nuove tecnologie e contribuire a progetti ambiziosi.
+            </p>`,
+        educationMsg: `<ul>
+            <li><b>Ciclo di ingegneria informatica - 2024/2027</b><br>Polytech - Nice Sophia</li><br><br>
+            <li><b>Laurea triennale in Informatica (apprendistato) - 2022/2024</b><br>IUT Nice Côte d’Azur - Sophia Antipolis</li><br><br>
+            <li><b>Baccalaureato Generale, Sezione ESABAC, Lode - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
+        </ul>`,
+        workMsg: `<ul>
+            <li><b>Apprendistato – Ampere Software Technology (Gruppo Renault) Settembre 2024 - presente</b>
+                <ul>
+                    <li>Sviluppo di strumenti software per l'automazione e il miglioramento dell'affidabilità dei test di veicoli definiti dal software (SDV).</li>
+                    <li>Progettazione di una libreria Python per generare set di dati realistici e di un'applicazione Rust (RMES) che utilizza l'API GraphQL per estrarre e strutturare i messaggi, integrata in una pipeline CI/CD.</li>
+                </ul>
+            </li>
+            <br>
+            <li><b>Apprendistato – European Systems Integration Settembre 2022 - Luglio 2024</b>
+                <ul>
+                    <li>Sviluppo di un'applicazione Java per l'esportazione di dati in formato JSON da un database remoto.</li>
+                    <li>Sviluppo di test automatizzati in Java con Selenium e TestNG, poi migrazione verso TypeScript con Cypress.</li>
+                </ul>
+            </li>
+        </ul>`,
+        unknownCmd: "Questo comando non è riconosciuto. Digita \"/help\" per vedere i comandi disponibili.",
+        projectsMsg: `<p>Clicca sul progetto che ti interessa:<br>
+            <ol>
+                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">"Emulatore Chip-8 in Rust - 2025"</a></li>
+                <li><a href="https://github.com/Loren844/blorenzo-portfolio" target="_blank">Portfolio personale - 2023</a></li>
+                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Progetto Applicazione Mobile - Semestre 4 Laurea in Informatica</a></li>
+                <li><a href="https://loren844.github.io/FISK/" target="_blank">Gioco "FISK" (java), variante di Risk - Semestre 2 Laurea in Informatica</a></li>
+                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Gioco del loto in C - Semestre 1 Laurea in Informatica</a></li>
+            </ol>`,
+        cv_link: "assets/CV_Lorenzo_BALADIER_en.pdf",
+        replay: "Rigioca",
+        quit: "Esci",
+        langCmd: "Cambia la lingua: /lang fr, /lang en o /lang it",
+        langUsage: "Uso: /lang fr, /lang en o /lang it",
+        hacker: "Attiva il tema hacker (sbloccato)",
+        hackerUnlocked: "Bravo! Obiettivo sbloccato: tema Hacker"
     }
 };
