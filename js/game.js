@@ -42,173 +42,44 @@ function updateSnake(){
     }
 }
 
+const RAINBOW_COLORS = ['red', 'violet', 'blue', 'cyan', 'lightgreen', 'yellow', 'orange']
+
 function drawSnake(snake){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    const color = actualSpeed === maxSpeed ? RAINBOW_COLORS[Math.floor(mystery / 2)] : 'green'
     for(let i = 0; i < snake.length; i++){
-        ctx.fillStyle = 'green';
-        if(actualSpeed === maxSpeed){
-            if(mystery === 0 || mystery === 1){
-                ctx.fillStyle = 'red'
-            }
-            else if(mystery === 2 || mystery === 3){
-                ctx.fillStyle = 'violet'
-            }
-            else if(mystery === 4 || mystery === 5){
-                ctx.fillStyle = 'blue'
-            }
-            else if(mystery === 6 || mystery === 7){
-                ctx.fillStyle = 'cyan'
-            }
-            else if(mystery === 8 || mystery === 9){
-                ctx.fillStyle = 'lightgreen'
-            }
-            else if(mystery === 10 || mystery === 11){
-                ctx.fillStyle = 'yellow'
-            }
-            else if(mystery === 12 || mystery === 13){
-                ctx.fillStyle = 'orange'
-            }
-        }
+        ctx.fillStyle = color
         ctx.fillRect(snake[i].x, snake[i].y, 10, 10)
     }
-    if(mystery === 13)
-        {
-            mystery = 0
-        }
-        else{
-            mystery++
-        }
+    mystery = mystery === 13 ? 0 : mystery + 1
 }
 
 // Items
-function createFood(){
-    let x = Math.floor(Math.random()*canvas.width/10)*10
-    let y = Math.floor(Math.random()*canvas.height/10)*10
+function randomCoord(max){
+    return Math.floor(Math.random() * max / 10) * 10
+}
+
+function createItem(avoidFood){
+    let x = randomCoord(canvas.width)
+    let y = randomCoord(canvas.height)
     for(let i = 0; i < snake.length; i++){
         while(x === snake[i].x && y === snake[i].y){
-            x = Math.floor(Math.random()*canvas.width/10)*10
-            y = Math.floor(Math.random()*canvas.height/10)*10
+            x = randomCoord(canvas.width)
+            y = randomCoord(canvas.height)
         }
     }
-
-    let food = {
-        x: x,
-        y: y
-    }
-    return food
-}
-
-function drawFood(food){
-    ctx.fillStyle = 'red'
-    ctx.fillRect(food.x, food.y, 10, 10)
-}
-
-function createBomb(){
-    let x = Math.floor(Math.random()*canvas.width/10)*10
-    let y = Math.floor(Math.random()*canvas.height/10)*10
-    for(let i = 0; i < snake.length; i++){
-        while(x === snake[i].x && y === snake[i].y){
-            x = Math.floor(Math.random()*canvas.width/10)*10
-            y = Math.floor(Math.random()*canvas.height/10)*10
+    if(avoidFood){
+        while(x === food.x && y === food.y){
+            x = randomCoord(canvas.width)
+            y = randomCoord(canvas.height)
         }
     }
-
-    while(x===food.x && y===food.y){
-        x = Math.floor(Math.random()*canvas.width/10)*10
-        y = Math.floor(Math.random()*canvas.height/10)*10
-    }
-
-    let bomb = {
-        x: x,
-        y: y
-    }
-    return bomb
+    return { x, y }
 }
 
-function drawBomb(bomb){
-    ctx.fillStyle = 'grey'
-    ctx.fillRect(bomb.x, bomb.y, 10, 10)
-}
-
-function createGoldFood(){
-    let x = Math.floor(Math.random()*canvas.width/10)*10
-    let y = Math.floor(Math.random()*canvas.height/10)*10
-    for(let i = 0; i < snake.length; i++){
-        while(x === snake[i].x && y === snake[i].y){
-            x = Math.floor(Math.random()*canvas.width/10)*10
-            y = Math.floor(Math.random()*canvas.height/10)*10
-        }
-    }
-
-    while(x===food.x && y===food.y){
-        x = Math.floor(Math.random()*canvas.width/10)*10
-        y = Math.floor(Math.random()*canvas.height/10)*10
-    }
-
-    let goldFood = {
-        x: x,
-        y: y
-    }
-    return goldFood
-}
-
-function drawGoldFood(goldFood){
-    ctx.fillStyle = 'yellow'
-    ctx.fillRect(goldFood.x, goldFood.y, 10, 10)
-}
-
-function createRottenFood(){
-    let x = Math.floor(Math.random()*canvas.width/10)*10
-    let y = Math.floor(Math.random()*canvas.height/10)*10
-    for(let i = 0; i < snake.length; i++){
-        while(x === snake[i].x && y === snake[i].y){
-            x = Math.floor(Math.random()*canvas.width/10)*10
-            y = Math.floor(Math.random()*canvas.height/10)*10
-        }
-    }
-
-    while(x===food.x && y===food.y){
-        x = Math.floor(Math.random()*canvas.width/10)*10
-        y = Math.floor(Math.random()*canvas.height/10)*10
-    }
-
-    let rottenFood = {
-        x: x,
-        y: y
-    }
-    return rottenFood
-}
-
-function drawRottenFood(rottenFood){
-    ctx.fillStyle = '#717744'
-    ctx.fillRect(rottenFood.x, rottenFood.y, 10, 10)
-}
-
-function createPoisonnedFood(){
-    let x = Math.floor(Math.random()*canvas.width/10)*10
-    let y = Math.floor(Math.random()*canvas.height/10)*10
-    for(let i = 0; i < snake.length; i++){
-        while(x === snake[i].x && y === snake[i].y){
-            x = Math.floor(Math.random()*canvas.width/10)*10
-            y = Math.floor(Math.random()*canvas.height/10)*10
-        }
-    }
-
-    while(x===food.x && y===food.y){
-        x = Math.floor(Math.random()*canvas.width/10)*10
-        y = Math.floor(Math.random()*canvas.height/10)*10
-    }
-
-    let poisonnedFood = {
-        x: x,
-        y:y
-    }
-    return poisonnedFood
-}
-
-function drawPoisonnedFood(poisonnedFood){
-    ctx.fillStyle = '#8367c7'
-    ctx.fillRect(poisonnedFood.x, poisonnedFood.y, 10, 10)
+function drawCell(item, color){
+    ctx.fillStyle = color
+    ctx.fillRect(item.x, item.y, 10, 10)
 }
 
 
@@ -237,7 +108,7 @@ function checkFoodCollision(){
             y: snake[snake.length-1].y
         }
         ctx.clearRect(food.x, food.y, 10, 10)
-        food = createFood()
+        food = createItem(false)
         scoreCount++
         score.innerHTML = scoreCount
     }
@@ -325,25 +196,25 @@ function updateGame(){
 
         if(Object.keys(bomb).length === 0 && Object.keys(goldFood).length === 0 && Object.keys(rottenFood).length === 0 && Object.keys(poisonnedFood).length === 0){ 
             if(scoreCount > 4 && randomItem === 1 || randomItem === 2){
-                bomb = createBomb()
+                bomb = createItem(true)
                 itemCount = 0
                 randomItem = Math.floor(Math.random() * 11)
             }
     
             else if(scoreCount > 4 && randomItem === 3){
-                goldFood = createGoldFood()
+                goldFood = createItem(true)
                 itemCount = 0
                 randomItem = Math.floor(Math.random() * 11)
             }
     
             else if(scoreCount > 4 && randomItem === 4 || randomItem === 5 || randomItem === 6 || randomItem === 7){
-                rottenFood = createRottenFood()
+                rottenFood = createItem(true)
                 itemCount = 0
                 randomItem = Math.floor(Math.random() * 11)
             }
     
             else if(scoreCount > 4 &&  randomItem === 8 || randomItem === 9 || randomItem === 10){
-                poisonnedFood = createPoisonnedFood()
+                poisonnedFood = createItem(true)
                 itemCount = 0
                 randomItem = Math.floor(Math.random() * 11)
             }
@@ -381,13 +252,13 @@ function updateGame(){
             itemCount = 0
         }
         
-        drawFood(food)
+        drawCell(food, 'red')
         if(scoreCount > 4){
             itemCount++
-            drawBomb(bomb)
-            drawGoldFood(goldFood)
-            drawRottenFood(rottenFood)
-            drawPoisonnedFood(poisonnedFood)
+            drawCell(bomb, 'grey')
+            drawCell(goldFood, 'yellow')
+            drawCell(rottenFood, '#717744')
+            drawCell(poisonnedFood, '#8367c7')
         }
         
         if(minSpeed - scoreCount <= maxSpeed){
@@ -411,10 +282,10 @@ function main(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     snake = initSnake()
-    food = createFood()
+    food = createItem(false)
 
     drawSnake(snake)
-    drawFood(food)
+    drawCell(food, 'red')
 
     updateGame()
 }

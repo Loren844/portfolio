@@ -170,6 +170,14 @@ body {
 	font-family: 'Consolas', monospace;
 	text-align: right;
 	padding-right: 10px;
+	white-space: nowrap;
+}
+
+#lang-select {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1000;
 }
 
 #userInput {

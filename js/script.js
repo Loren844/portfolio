@@ -17,16 +17,8 @@ function setLanguage(lang) {
 }
 
 const langSelect = document.getElementById('language');
-if (langSelect) {
-    langSelect.addEventListener('change', function () {
-        setLanguage(this.value);
-        clearConsole();
-    });
-    // Initialisation à la langue par défaut
-    setLanguage(langSelect.value);
-}
 
-var isExpanded = false;
+let isExpanded = false;
 
 function getCommands(lang) {
     return [
@@ -45,44 +37,35 @@ function getCommands(lang) {
     ];
 }
 
-let commands = getCommands(langSelect ? langSelect.value : 'fr');
+let commands = getCommands(langSelect.value);
 const commandsText = commands.map(cmd => cmd.command);
 
 langSelect.addEventListener('change', function () {
     setLanguage(this.value);
     commands = getCommands(this.value);
+    clearConsole();
 });
-setLanguage(langSelect.value);
-commands = getCommands(langSelect.value);
 
-//ajouter listeners pour la touche tab pour imiter un terminal
+setLanguage(langSelect.value);
+
+// Touche Tab pour imiter l'autocomplétion d'un terminal
 document.addEventListener('keydown', function (e) {
-    if (e.key === 'Tab') {
-        e.preventDefault();
-        let input = userInput.value;
-        if (input === '') {
-            userInput.value = '/help';
-        }
-        else {
-            let commands = [];
-            for (let i = 0; i < commandsText.length; i++) {
-                if (commandsText[i].startsWith(input)) {
-                    commands.push(commandsText[i]);
-                }
-            }
-            if (commands.length === 1) {
-                userInput.value = commands[0];
-            }
-            else if (commands.length > 1) {
-                //afficher les commandes possibles en dessous
-                let commandList = ""
-                for (let i = 0; i < commands.length; i++) {
-                    commandList += commands[i] + "  "
-                }
-                clearConsole();
-                output.innerHTML = commandList;
-            }
-        }
+    if (e.key !== 'Tab') {
+        return;
+    }
+    e.preventDefault();
+    const input = userInput.value;
+    if (input === '') {
+        userInput.value = '/help';
+        return;
+    }
+    const matches = commandsText.filter(cmd => cmd.startsWith(input));
+    if (matches.length === 1) {
+        userInput.value = matches[0];
+    }
+    else if (matches.length > 1) {
+        clearConsole();
+        output.innerHTML = matches.join('  ');
     }
 })
 
@@ -249,7 +232,9 @@ userInput.addEventListener('keydown', function (event) {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-    var enterBtn = document.getElementById('enterButton');
+    userInput.focus();
+
+    const enterBtn = document.getElementById('enterButton');
     if (enterBtn) {
         enterBtn.addEventListener('click', function () {
             document.getElementById('curtain').style.transform = 'translateY(-100%)';

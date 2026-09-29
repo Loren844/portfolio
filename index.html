@@ -5,16 +5,17 @@
 	<meta charset="UTF-8">
 	<title>Portfolio | Lorenzo BALADIER</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="icon" href="icon.png" type="image/png">
-	<script src="lang.js"></script>
-	<script src="script.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="icon" href="assets/icon.png" type="image/png">
+	<script src="js/lang.js" defer></script>
+	<script src="js/script.js" defer></script>
+	<script src="js/game.js" defer></script>
 </head>
 
 <body class="theme-dark">
 	<div id="curtain">
 		<video id="videoBackground" autoplay muted loop>
-			<source src="code.mp4" type="video/mp4">
+			<source src="assets/code.mp4" type="video/mp4">
 		</video>
 		<div id="videoOverlay"></div>
 		<div id="content">
@@ -26,9 +27,8 @@
 			</button>
 		</div>
 	</div>
-	</div>
 
-	<div id="lang-select" style="position:absolute;top:10px;right:10px;z-index:1000;">
+	<div id="lang-select">
 		<label id="language-label" for="language">Langue :</label>
 		<select id="language">
 			<option value="fr">Français</option>
@@ -45,7 +45,7 @@
 		</div>
 		<div class="terminal-body">
 			<p>Bienvenue dans mon portfolio! Tapez <i>/help</i> pour voir les commandes disponibles.</p>
-			<label for="userInput" class="label-text" style="white-space: nowrap;">C:\Users\blorenzo&gt;</label>
+			<label for="userInput" class="label-text">C:\Users\blorenzo&gt;</label>
 			<input type="text" id="userInput" placeholder="Veuillez saisir une commande...">
 			<div class="suggestions">
 				<ul id="suggestions-list"></ul>
@@ -63,13 +63,6 @@
 	<div id="easter-egg">
 		<img src="https://picsum.photos/1920/1080" id="icon" alt="icon">
 	</div>
-	<script src="script.js"></script>
-	<script src="game.js"></script>
-	<script>
-		window.onload = function () {
-			document.getElementById('userInput').focus();
-		};
-	</script>
 </body>
 
 </html>

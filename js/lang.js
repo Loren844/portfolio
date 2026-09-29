@@ -62,7 +62,7 @@ const translations = {
                 <li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk - Semestre 2 BUT Informatique</a></li>
                 <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Semestre 1 BUT Informatique</a></li>
             </ol>`,
-        cv_link: "CV_Lorenzo_BALADIER_fr.pdf",
+        cv_link: "assets/CV_Lorenzo_BALADIER_fr.pdf",
         replay: "Rejouer",
         quit: "Quitter",
         language: "Langue"
@@ -128,7 +128,7 @@ const translations = {
                 <li><a href="https://loren844.github.io/FISK/" target="_blank">"FISK" game (java), Risk variant - Semester 2 Computer Science Bachelor</a></li>
                 <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Loto game in C - Semester 1 Computer Science Bachelor</a></li>
             </ol>`,
-        cv_link: "CV_Lorenzo_BALADIER_en.pdf",
+        cv_link: "assets/CV_Lorenzo_BALADIER_en.pdf",
         replay: "Replay",
         quit: "Quit",
         language: "Language"
