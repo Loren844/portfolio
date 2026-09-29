@@ -68,9 +68,29 @@ const translations = {
         langCmd: "Changer la langue : /lang fr, /lang en ou /lang it",
         langUsage: "Usage : /lang fr, /lang en ou /lang it",
         hacker: "Activer le thème hacker (débloqué)",
-        hackerUnlocked: "Bravo ! Succès débloqué : thème Hacker",
+        hackerUnlocked: "Bravo ! Succès débloqué : Code Konami (Hacker)",
+        portalTheme: "Activer le thème Portal (débloqué)",
+        portalUnlocked: "Bravo ! Succès débloqué : The cake is a lie (thème Portal)",
+        naviOff: "Désactiver Navi",
+        naviToggle: "Activer/désactiver Navi",
+        naviUnlocked: "Bravo ! Succès débloqué : Hey, écoute Navi !",
         barrelroll: "Faire faire un tonneau au terminal (débloqué)",
-        barrelrollUnlocked: "Bravo ! Succès débloqué : Barrel Roll"
+        barrelrollUnlocked: "Bravo ! Succès débloqué : Barrel Roll",
+        progress: "Voir les succès débloqués (débloqué)",
+        progressTitle: "Succès débloqués",
+        progressRemaining: "Encore à trouver : %n%",
+        achievements: {
+            hacker: "Code Konami (Hacker)",
+            barrelroll: "Barrel Roll",
+            marioSad: "Mario est triste, aide-le à retrouver ses succès",
+            portal: "The cake is a lie (thème Portal)",
+            navi: "Hey, écoute Navi !",
+            moneyRain: "Motherlode ! Pluie de billets"
+        },
+        marioSadUnlocked: "Bravo ! Succès débloqué : Mario est triste, aide-le à retrouver ses succès",
+        rainbowTheme: "Activer le thème Rainbow RGB (débloqué)",
+        allAchievementsUnlocked: "🎉 Félicitations ! Tous les succès sont débloqués ! Thème Rainbow RGB débloqué.",
+        moneyRainUnlocked: "Bravo ! Succès débloqué : Motherlode ! Pluie de billets"
     },
     en: {
         title: "Lorenzo BALADIER's Portfolio",
@@ -139,9 +159,29 @@ const translations = {
         langCmd: "Change the language: /lang fr, /lang en or /lang it",
         langUsage: "Usage: /lang fr, /lang en or /lang it",
         hacker: "Enable the hacker theme (unlocked)",
-        hackerUnlocked: "Well done! Achievement unlocked: Hacker theme",
+        hackerUnlocked: "Well done! Achievement unlocked: Konami Code (Hacker)",
+        portalTheme: "Enable the Portal theme (unlocked)",
+        portalUnlocked: "Well done! Achievement unlocked: The cake is a lie (Portal theme)",
+        naviOff: "Turn Navi off",
+        naviToggle: "Toggle Navi on/off",
+        naviUnlocked: "Well done! Achievement unlocked: Hey, listen!",
         barrelroll: "Make the terminal do a barrel roll (unlocked)",
-        barrelrollUnlocked: "Well done! Achievement unlocked: Barrel Roll"
+        barrelrollUnlocked: "Well done! Achievement unlocked: Barrel Roll",
+        progress: "View unlocked achievements (unlocked)",
+        progressTitle: "Unlocked achievements",
+        progressRemaining: "Still to find: %n%",
+        achievements: {
+            hacker: "Konami Code (Hacker)",
+            barrelroll: "Barrel Roll",
+            marioSad: "Mario is sad, help him find his achievements",
+            portal: "The cake is a lie (Portal theme)",
+            navi: "Hey, listen!",
+            moneyRain: "Motherlode! Money rain"
+        },
+        marioSadUnlocked: "Well done! Achievement unlocked: Mario is sad, help him find his achievements",
+        rainbowTheme: "Enable the Rainbow RGB theme (unlocked)",
+        allAchievementsUnlocked: "🎉 Congratulations! All achievements unlocked! Rainbow RGB theme unlocked.",
+        moneyRainUnlocked: "Well done! Achievement unlocked: Motherlode! Money rain"
     },
     it: {
         title: "Portfolio di Lorenzo BALADIER",
@@ -210,8 +250,28 @@ const translations = {
         langCmd: "Cambia la lingua: /lang fr, /lang en o /lang it",
         langUsage: "Uso: /lang fr, /lang en o /lang it",
         hacker: "Attiva il tema hacker (sbloccato)",
-        hackerUnlocked: "Bravo! Obiettivo sbloccato: tema Hacker",
+        hackerUnlocked: "Bravo! Obiettivo sbloccato: Codice Konami (Hacker)",
+        portalTheme: "Attiva il tema Portal (sbloccato)",
+        portalUnlocked: "Bravo! Obiettivo sbloccato: The cake is a lie (tema Portal)",
+        naviOff: "Disattiva Navi",
+        naviToggle: "Attiva/disattiva Navi",
+        naviUnlocked: "Bravo! Obiettivo sbloccato: Ehi, ascolta Navi!",
         barrelroll: "Fai fare un tonneau al terminale (sbloccato)",
-        barrelrollUnlocked: "Bravo! Obiettivo sbloccato: Barrel Roll"
+        barrelrollUnlocked: "Bravo! Obiettivo sbloccato: Barrel Roll",
+        progress: "Vedi gli obiettivi sbloccati (sbloccato)",
+        progressTitle: "Obiettivi sbloccati",
+        progressRemaining: "Ancora da trovare: %n%",
+        achievements: {
+            hacker: "Codice Konami (Hacker)",
+            barrelroll: "Barrel Roll",
+            marioSad: "Mario è triste, aiutalo a ritrovare i suoi obiettivi",
+            portal: "The cake is a lie (tema Portal)",
+            navi: "Ehi, ascolta Navi!",
+            moneyRain: "Motherlode! Pioggia di soldi"
+        },
+        marioSadUnlocked: "Bravo! Obiettivo sbloccato: Mario è triste, aiutalo a ritrovare i suoi obiettivi",
+        rainbowTheme: "Attiva il tema Rainbow RGB (sbloccato)",
+        allAchievementsUnlocked: "🎉 Complimenti! Tutti gli obiettivi sono stati sbloccati! Tema Rainbow RGB sbloccato.",
+        moneyRainUnlocked: "Bravo! Obiettivo sbloccato: Motherlode! Pioggia di soldi"
     }
 };

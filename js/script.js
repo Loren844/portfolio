@@ -3,6 +3,7 @@ const output = document.getElementById('output');
 const closeButton = document.getElementById('closeButton');
 const quitButton = document.getElementById('quitButton');
 const expandButton = document.getElementById('expandButton');
+const naviCursor = document.getElementById('naviCursor');
 
 // Gestion de la langue
 function setLanguage(lang) {
@@ -19,6 +20,29 @@ let currentLang = 'fr';
 let isExpanded = false;
 let hackerUnlocked = false;
 let barrelrollUnlocked = false;
+let marioSadUnlocked = false;
+let portalThemeUnlocked = false;
+let naviUnlocked = false;
+let naviActive = false;
+let pointerX = 0;
+let pointerY = 0;
+let naviAnimationFrame = null;
+let rainbowUnlocked = false;
+let moneyRainUnlocked = false;
+
+// Registre des succès (extensible : ajouter une entrée + son nom dans translations.achievements)
+const ACHIEVEMENTS = [
+    { id: 'hacker', unlocked: () => hackerUnlocked },
+    { id: 'barrelroll', unlocked: () => barrelrollUnlocked },
+    { id: 'marioSad', unlocked: () => marioSadUnlocked },
+    { id: 'portal', unlocked: () => portalThemeUnlocked },
+    { id: 'navi', unlocked: () => naviUnlocked },
+    { id: 'moneyRain', unlocked: () => moneyRainUnlocked }
+];
+
+function anyAchievementUnlocked() {
+    return ACHIEVEMENTS.some(a => a.unlocked());
+}
 
 function getCommands(lang) {
     const list = [
@@ -39,13 +63,130 @@ function getCommands(lang) {
     if (hackerUnlocked) {
         list.push({ command: '/hacker', description: translations[lang].hacker });
     }
+    if (portalThemeUnlocked) {
+        list.push({ command: '/portal', description: translations[lang].portalTheme });
+    }
+    if (naviUnlocked) {
+        list.push({ command: '/navi', description: translations[lang].naviToggle });
+    }
     if (barrelrollUnlocked) {
         list.push({ command: '/barrelroll', description: translations[lang].barrelroll });
+    }
+    if (rainbowUnlocked) {
+        list.push({ command: '/rainbow', description: translations[lang].rainbowTheme });
+    }
+    if (anyAchievementUnlocked()) {
+        list.push({ command: '/progress', description: translations[lang].progress });
     }
     return list;
 }
 
 let commands = getCommands(currentLang);
+
+function showProgress() {
+    const unlocked = ACHIEVEMENTS.filter(a => a.unlocked());
+    const total = ACHIEVEMENTS.length;
+    let html = `<div><strong>${translations[currentLang].progressTitle} (${unlocked.length}/${total})</strong></div><ul>`;
+    unlocked.forEach(a => {
+        html += `<li>${translations[currentLang].achievements[a.id]}</li>`;
+    });
+    html += '</ul>';
+    const remaining = total - unlocked.length;
+    html += `<div>${translations[currentLang].progressRemaining.replace('%n%', remaining)}</div>`;
+    output.innerHTML = html;
+}
+
+function positionNavi(x, y, orbitX, orbitY) {
+    const size = 68;
+    const offset = 18;
+    let left = x + offset + orbitX;
+    let top = y + offset + orbitY;
+    if (left + size > window.innerWidth) {
+        left = x - size - offset + orbitX;
+    }
+    if (top + size > window.innerHeight) {
+        top = y - size - offset + orbitY;
+    }
+    naviCursor.style.left = `${Math.max(0, Math.min(left, window.innerWidth - size))}px`;
+    naviCursor.style.top = `${Math.max(0, Math.min(top, window.innerHeight - size))}px`;
+}
+
+function animateNavi() {
+    if (!naviActive) {
+        return;
+    }
+    const time = performance.now() / 1000;
+    const orbitX = Math.cos(time * 3.1) * 16 + Math.sin(time * 5.3) * 5;
+    const orbitY = Math.sin(time * 2.7) * 20 + Math.cos(time * 4.8) * 6;
+    const rotation = Math.sin(time * 2.2) * 10 + Math.cos(time * 4.1) * 3;
+    positionNavi(pointerX, pointerY, orbitX, orbitY);
+    naviCursor.style.transform = `rotate(${rotation}deg)`;
+    naviAnimationFrame = requestAnimationFrame(animateNavi);
+}
+
+document.addEventListener('mousemove', function (event) {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+});
+
+function activateNavi() {
+    naviActive = true;
+    naviCursor.hidden = false;
+    if (naviAnimationFrame === null) {
+        naviAnimationFrame = requestAnimationFrame(animateNavi);
+    }
+    if (!naviUnlocked) {
+        naviUnlocked = true;
+        showAchievement(translations[currentLang].naviUnlocked);
+        checkAllAchievementsCompleted();
+    }
+    commands = getCommands(currentLang);
+}
+
+function deactivateNavi() {
+    naviActive = false;
+    cancelAnimationFrame(naviAnimationFrame);
+    naviAnimationFrame = null;
+    naviCursor.hidden = true;
+    commands = getCommands(currentLang);
+}
+
+function toggleNavi() {
+    if (naviActive) {
+        deactivateNavi();
+    } else {
+        activateNavi();
+    }
+}
+
+function startMoneyRain() {
+    const container = document.createElement('div');
+    container.className = 'money-rain';
+    const symbols = ['€', '$', '£', '¥', '₿', '¢', '₹', '₩', '₽', '₺', '₴', '฿'];
+    for (let i = 0; i < 400; i++) {
+        const span = document.createElement('span');
+        span.className = 'money-symbol';
+        span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+        span.style.animationDuration = (0.7 + Math.random() * 0.9) + 's';
+        span.style.animationDelay = (Math.random() * 1) + 's';
+        container.appendChild(span);
+    }
+    document.body.appendChild(container);
+    setTimeout(() => container.remove(), 3500);
+}
+
+function unlockMoneyRain() {
+    startMoneyRain();
+    if (moneyRainUnlocked) {
+        return;
+    }
+    moneyRainUnlocked = true;
+    commands = getCommands(currentLang);
+    showAchievement(translations[currentLang].moneyRainUnlocked);
+    checkAllAchievementsCompleted();
+}
 
 function changeLanguage(lang) {
     if (!translations[lang]) {
@@ -122,7 +263,7 @@ function clearConsole() {
 
 function setTheme(theme) {
     const body = document.querySelector('body');
-    body.classList.remove('theme-dark', 'theme-light', 'theme-hacker');
+    body.classList.remove('theme-dark', 'theme-light', 'theme-hacker', 'theme-portal', 'theme-rainbow');
     body.classList.add('theme-' + theme);
 }
 
@@ -159,6 +300,18 @@ function unlockHacker() {
     hackerUnlocked = true;
     commands = getCommands(currentLang);
     showAchievement(translations[currentLang].hackerUnlocked);
+    checkAllAchievementsCompleted();
+}
+
+function unlockPortalTheme() {
+    setTheme('portal');
+    if (portalThemeUnlocked) {
+        return;
+    }
+    portalThemeUnlocked = true;
+    commands = getCommands(currentLang);
+    showAchievement(translations[currentLang].portalUnlocked);
+    checkAllAchievementsCompleted();
 }
 
 function doBarrelRoll() {
@@ -171,6 +324,7 @@ function doBarrelRoll() {
     barrelrollUnlocked = true;
     commands = getCommands(currentLang);
     showAchievement(translations[currentLang].barrelrollUnlocked);
+    checkAllAchievementsCompleted();
 }
 
 function showAchievement(message) {
@@ -180,6 +334,26 @@ function showAchievement(message) {
     document.body.appendChild(banner);
     setTimeout(() => banner.classList.add('achievement-hide'), 4000);
     setTimeout(() => banner.remove(), 4600);
+}
+
+// Récompense méta : débloquée une fois que tous les succès du registre sont validés
+function checkAllAchievementsCompleted() {
+    if (rainbowUnlocked || !ACHIEVEMENTS.every(a => a.unlocked())) {
+        return;
+    }
+    rainbowUnlocked = true;
+    setTheme('rainbow');
+    commands = getCommands(currentLang);
+    showCongrats(translations[currentLang].allAchievementsUnlocked);
+}
+
+function showCongrats(message) {
+    const banner = document.createElement('div');
+    banner.className = 'achievement achievement-grand';
+    banner.innerHTML = `<span class="achievement-icon">&#127881;</span> ${message}`;
+    document.body.appendChild(banner);
+    setTimeout(() => banner.classList.add('achievement-hide'), 6000);
+    setTimeout(() => banner.remove(), 6600);
 }
 
 function snakeGame() {
@@ -206,6 +380,12 @@ function closeterminal() {
 }
 
 function quitTerminal() {
+    if (!marioSadUnlocked) {
+        marioSadUnlocked = true;
+        commands = getCommands(currentLang);
+        showAchievement(translations[currentLang].marioSadUnlocked);
+        checkAllAchievementsCompleted();
+    }
     document.getElementById('terminal').style.display = 'none';
     document.getElementById('easter-egg').style.display = 'block';
 }
@@ -233,6 +413,12 @@ quitButton.addEventListener('click', quitTerminal);
 
 expandButton.addEventListener('click', expandTerminal);
 
+document.getElementById('returnToTerminal').addEventListener('click', function () {
+    document.getElementById('easter-egg').style.display = 'none';
+    document.getElementById('terminal').style.display = 'block';
+    userInput.focus();
+});
+
 
 userInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
@@ -247,6 +433,21 @@ userInput.addEventListener('keydown', function (event) {
 
         if (inputText === 'do a barrel roll') {
             doBarrelRoll();
+            userInput.value = '';
+            return;
+        }
+        if (inputText.trim() === 'the cake is a lie') {
+            unlockPortalTheme();
+            userInput.value = '';
+            return;
+        }
+        if (inputText.trim() === 'hey listen') {
+            activateNavi();
+            userInput.value = '';
+            return;
+        }
+        if (inputText.trim() === 'motherlode') {
+            unlockMoneyRain();
             userInput.value = '';
             return;
         }
@@ -297,9 +498,37 @@ userInput.addEventListener('keydown', function (event) {
                     output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
                 }
                 break;
+            case '/portal':
+                if (portalThemeUnlocked) {
+                    setTheme('portal');
+                } else {
+                    output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
+                }
+                break;
+            case '/navi':
+                if (naviUnlocked) {
+                    toggleNavi();
+                } else {
+                    output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
+                }
+                break;
+            case '/rainbow':
+                if (rainbowUnlocked) {
+                    setTheme('rainbow');
+                } else {
+                    output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
+                }
+                break;
             case '/barrelroll':
                 if (barrelrollUnlocked) {
                     doBarrelRoll();
+                } else {
+                    output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
+                }
+                break;
+            case '/progress':
+                if (anyAchievementUnlocked()) {
+                    showProgress();
                 } else {
                     output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
                 }
