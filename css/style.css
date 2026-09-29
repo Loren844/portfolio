@@ -173,13 +173,6 @@ body {
 	white-space: nowrap;
 }
 
-#lang-select {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	z-index: 1000;
-}
-
 #userInput {
 	font-family: 'Consolas', monospace;
 	background-color: transparent;
@@ -196,6 +189,105 @@ body {
 
 .theme-light #userInput {
 	color: black;
+}
+
+/*hacker-theme*/
+.theme-hacker {
+	background-color: #000;
+	color: #00ff41;
+}
+
+.theme-hacker #terminal {
+	background-color: #000;
+	box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+	color: #00ff41;
+}
+
+.theme-hacker #userInput {
+	color: #00ff41;
+}
+
+.theme-hacker a,
+.theme-hacker a:visited,
+.theme-hacker a:hover,
+.theme-hacker a:visited:hover {
+	color: #39ff14;
+	text-decoration: none;
+}
+
+.theme-hacker ::-webkit-scrollbar {
+	width: 10px;
+	background-color: #000;
+}
+
+.theme-hacker ::-webkit-scrollbar-thumb {
+	background-color: #0a3d0a;
+	border-radius: 5px;
+}
+
+/*achievement (konami code)*/
+.achievement {
+	position: fixed;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 16px;
+	border: 1px solid #00ff41;
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, 0.85);
+	color: #00ff41;
+	font-weight: bold;
+	box-shadow: 0 0 20px rgba(0, 255, 65, 0.35);
+	animation: achievementIn 0.5s ease-out both, achievementPulse 1.2s ease-in-out infinite alternate;
+}
+
+.achievement-icon {
+	font-size: 1.5em;
+	animation: achievementSpin 0.8s ease-out both;
+}
+
+.achievement-hide {
+	animation: achievementOut 0.6s ease-in forwards;
+}
+
+@keyframes achievementIn {
+	from {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-15px) scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0) scale(1);
+	}
+}
+
+@keyframes achievementOut {
+	to {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-15px) scale(0.9);
+	}
+}
+
+@keyframes achievementPulse {
+	from {
+		box-shadow: 0 0 12px rgba(0, 255, 65, 0.25);
+	}
+	to {
+		box-shadow: 0 0 26px rgba(0, 255, 65, 0.6);
+	}
+}
+
+@keyframes achievementSpin {
+	from {
+		transform: rotate(-360deg) scale(0);
+	}
+	to {
+		transform: rotate(0) scale(1);
+	}
 }
 
 #output {
@@ -240,6 +332,57 @@ body {
 	text-align: center;
 	padding-top: 40vh;
 	color: white;
+}
+
+#content h1 {
+	font-size: clamp(2rem, 6vw, 4rem);
+	font-weight: 700;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin: 0 auto 0.5rem;
+	background: linear-gradient(90deg, #00c6ff, #7d5fff, #00ffa3);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	animation: titleFadeIn 1.2s ease-out both, titleGradient 6s linear infinite, titleGlow 3s ease-in-out infinite alternate;
+}
+
+#content .subtitle {
+	font-size: clamp(1rem, 2.5vw, 1.5rem);
+	font-weight: 400;
+	letter-spacing: 6px;
+	margin: 0 auto 2.5rem;
+	color: rgba(255, 255, 255, 0.75);
+	text-transform: uppercase;
+	animation: titleFadeIn 1.2s ease-out 0.3s both;
+}
+
+@keyframes titleFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-25px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes titleGradient {
+	to {
+		background-position: 200% center;
+	}
+}
+
+@keyframes titleGlow {
+	from {
+		filter: drop-shadow(0 0 6px rgba(0, 198, 255, 0.35));
+	}
+	to {
+		filter: drop-shadow(0 0 20px rgba(125, 95, 255, 0.7));
+	}
 }
 
 h1 {

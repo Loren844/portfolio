@@ -6,22 +6,21 @@ const expandButton = document.getElementById('expandButton');
 
 // Gestion de la langue
 function setLanguage(lang) {
-    document.querySelector('#content h1').textContent = translations[lang].title;
     document.querySelector('#terminal .terminal-header span').textContent = translations[lang].title;
     document.querySelector('#terminal .terminal-body p').textContent = translations[lang].description;
     document.querySelector('#userInput').setAttribute('placeholder', translations[lang].input);
     document.querySelector('#enterButton .front').textContent = translations[lang].enter;
     document.querySelector('#replay').textContent = translations[lang].replay;
     document.querySelector('#quit').textContent = translations[lang].quit;
-    document.querySelector('#language-label').textContent = translations[lang].language;
 }
 
-const langSelect = document.getElementById('language');
+let currentLang = 'fr';
 
 let isExpanded = false;
+let hackerUnlocked = false;
 
 function getCommands(lang) {
-    return [
+    const list = [
         { command: '/help', description: translations[lang].help },
         { command: '/cv', description: translations[lang].cv },
         { command: '/projects', description: translations[lang].projects },
@@ -32,21 +31,30 @@ function getCommands(lang) {
         { command: '/dark', description: translations[lang].dark },
         { command: '/light', description: translations[lang].light },
         { command: '/snake', description: translations[lang].snake },
+        { command: '/lang', description: translations[lang].langCmd },
         { command: 'echo', description: translations[lang].echo },
         { command: 'clear', description: translations[lang].clear }
     ];
+    if (hackerUnlocked) {
+        list.push({ command: '/hacker', description: translations[lang].hacker });
+    }
+    return list;
 }
 
-let commands = getCommands(langSelect.value);
-const commandsText = commands.map(cmd => cmd.command);
+let commands = getCommands(currentLang);
 
-langSelect.addEventListener('change', function () {
-    setLanguage(this.value);
-    commands = getCommands(this.value);
+function changeLanguage(lang) {
+    if (!translations[lang]) {
+        output.innerHTML += `<div>${translations[currentLang].langUsage}</div>`;
+        return;
+    }
+    currentLang = lang;
+    setLanguage(currentLang);
+    commands = getCommands(currentLang);
     clearConsole();
-});
+}
 
-setLanguage(langSelect.value);
+setLanguage(currentLang);
 
 // Touche Tab pour imiter l'autocomplétion d'un terminal
 document.addEventListener('keydown', function (e) {
@@ -59,7 +67,7 @@ document.addEventListener('keydown', function (e) {
         userInput.value = '/help';
         return;
     }
-    const matches = commandsText.filter(cmd => cmd.startsWith(input));
+    const matches = commands.map(cmd => cmd.command).filter(cmd => cmd.startsWith(input));
     if (matches.length === 1) {
         userInput.value = matches[0];
     }
@@ -80,43 +88,82 @@ function displayCommands() {
 }
 
 function downloadCV() {
-    window.open(translations[langSelect.value].cv_link, '_blank').focus();
+    window.open(translations[currentLang].cv_link, '_blank').focus();
     clearConsole();
 }
 
 function displayProjects() {
-    output.innerHTML += translations[langSelect.value].projectsMsg;
+    output.innerHTML += translations[currentLang].projectsMsg;
 }
 
 function contact() {
-    output.innerHTML = translations[langSelect.value].contactMsg;
+    output.innerHTML = translations[currentLang].contactMsg;
 }
 
 function about() {
-    output.innerHTML = translations[langSelect.value].aboutMsg;
+    output.innerHTML = translations[currentLang].aboutMsg;
 }
 
 function education() {
-    output.innerHTML = translations[langSelect.value].educationMsg;
+    output.innerHTML = translations[currentLang].educationMsg;
 }
 
 function workexperience() {
-    output.innerHTML = translations[langSelect.value].workMsg;
+    output.innerHTML = translations[currentLang].workMsg;
 }
 
 function clearConsole() {
     output.innerHTML = '';
 }
 
-function toggleLightTheme() {
+function setTheme(theme) {
     const body = document.querySelector('body');
-    body.classList.replace('theme-dark', 'theme-light');
+    body.classList.remove('theme-dark', 'theme-light', 'theme-hacker');
+    body.classList.add('theme-' + theme);
+}
+
+function toggleLightTheme() {
+    setTheme('light');
 }
 
 function toggleDarkTheme() {
-    const body = document.querySelector('body');
-    body.classList.replace('theme-light', 'theme-dark');
+    setTheme('dark');
+}
 
+// Konami code : succès secret + thème hacker
+const KONAMI_CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', function (e) {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (key === KONAMI_CODE[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === KONAMI_CODE.length) {
+            konamiIndex = 0;
+            unlockHacker();
+        }
+    } else {
+        konamiIndex = key === KONAMI_CODE[0] ? 1 : 0;
+    }
+});
+
+function unlockHacker() {
+    setTheme('hacker');
+    if (hackerUnlocked) {
+        return;
+    }
+    hackerUnlocked = true;
+    commands = getCommands(currentLang);
+    showAchievement();
+}
+
+function showAchievement() {
+    const banner = document.createElement('div');
+    banner.className = 'achievement';
+    banner.innerHTML = `<span class="achievement-icon">&#127942;</span> ${translations[currentLang].hackerUnlocked}`;
+    document.body.appendChild(banner);
+    setTimeout(() => banner.classList.add('achievement-hide'), 4000);
+    setTimeout(() => banner.remove(), 4600);
 }
 
 function snakeGame() {
@@ -220,12 +267,22 @@ userInput.addEventListener('keydown', function (event) {
             case '/snake':
                 snakeGame();
                 break;
+            case '/hacker':
+                if (hackerUnlocked) {
+                    setTheme('hacker');
+                } else {
+                    output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
+                }
+                break;
+            case '/lang':
+                changeLanguage(inputArray[1]);
+                break;
             case 'echo':
                 const message = inputArray.slice(1).join(' ');
                 output.innerHTML = `<div>${message}</div>`;
                 break;
             default:
-                output.innerHTML += `<div>${translations[langSelect.value].unknownCmd}</div>`;
+                output.innerHTML += `<div>${translations[currentLang].unknownCmd}</div>`;
         }
         userInput.value = '';
     }

@@ -65,7 +65,10 @@ const translations = {
         cv_link: "assets/CV_Lorenzo_BALADIER_fr.pdf",
         replay: "Rejouer",
         quit: "Quitter",
-        language: "Langue"
+        langCmd: "Changer la langue : /lang fr ou /lang en",
+        langUsage: "Usage : /lang fr ou /lang en",
+        hacker: "Activer le thème hacker (débloqué)",
+        hackerUnlocked: "Bravo ! Succès débloqué : thème Hacker"
     },
     en: {
         title: "Lorenzo BALADIER's Portfolio",
@@ -131,6 +134,9 @@ const translations = {
         cv_link: "assets/CV_Lorenzo_BALADIER_en.pdf",
         replay: "Replay",
         quit: "Quit",
-        language: "Language"
+        langCmd: "Change the language: /lang fr or /lang en",
+        langUsage: "Usage: /lang fr or /lang en",
+        hacker: "Enable the hacker theme (unlocked)",
+        hackerUnlocked: "Well done! Achievement unlocked: Hacker theme"
     }
 };
