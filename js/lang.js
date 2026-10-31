@@ -6,7 +6,7 @@ const translations = {
         enter: "Entrer",
         input: "Veuillez saisir une commande...",
         help: "Afficher la liste des commandes disponibles",
-        cv: "Télécharger mon CV",
+        cv: "Ouvrir mon CV",
         projects: "Afficher mes projets",
         contact: "Pour me contacter / Voir mes liens utiles",
         aboutme: "En savoir plus sur moi",
@@ -18,51 +18,63 @@ const translations = {
         echo: "Renvoie le message écrit par l'utilisateur",
         clear: "Effacer la console",
         contactMsg: `Vous pouvez me contacter par les moyens ci-dessous :<br><br>
-            Mail : lobaladier@gmail.com <br>
+            Mail : <a href="mailto:contact@lorenzo-baladier.fr">contact@lorenzo-baladier.fr</a><br>
             <a href="https://www.linkedin.com/in/lorenzo-baladier/" target="_blank">Voir mon LinkedIn</a><br>
-            <a href="https://github.com/Loren844" target="_blank">Voir mon GitHub</a>`,
+            <a href="https://github.com/Loren844" target="_blank">Voir mon GitHub</a><br>
+            <a href="https://lorenzo-baladier.fr" target="_blank">Voir mon site</a>`,
         aboutMsg: `<p>
-                Je suis <strong>Lorenzo BALADIER</strong>, étudiant en informatique à Polytech Nice - Sophia Antipolis. Passionné par le développement logiciel et les nouvelles technologies, je maîtrise plusieurs langages de programmation tels que <strong>Rust, Python, Java</strong> et <strong>C/C++</strong>, et j’ai une expérience concrète dans la conception d’applications, l’automatisation de tests et le développement de solutions fiables et performantes.
+                Je suis <strong>Lorenzo BALADIER</strong>, élève ingénieur en dernière année à <strong>Polytech Nice Sophia</strong> (parcours IoT &amp; CPS) et apprenti ingénieur logiciel <strong>embarqué &amp; SDV</strong> chez <strong>Ampere Software Technology (Groupe Renault)</strong>.
             </p>
             <br>
             <p>
-                Durant mes expériences précédentes, notamment chez <strong>Ampere Software Technology (Renault Group)</strong> et <strong>European Systems Integration</strong>, j’ai participé à des projets variés allant de l’automatisation de tests à la création d’outils logiciels intégrés dans des pipelines CI/CD, en utilisant Docker et des APIs (GraphQL, REST).
+                Je travaille sur le véhicule défini par logiciel : bring-up sur <strong>Raspberry Pi</strong> et <strong>Cuttlefish</strong>, communication orientée services (<strong>SOME/IP</strong>, <strong>Protobuf</strong>), CI/CD et outillage en <strong>Rust</strong>. Lors d'un stage au Vietnam (DNIIT), j'ai réalisé l'asservissement visuel d'un bras robotique SCARA avec <strong>ROS 2</strong>, <strong>MoveIt 2</strong> et <strong>YOLO</strong>.
             </p>
             <br>
             <p>
-                J’aime relever des défis techniques, explorer de nouvelles technologies et contribuer à des projets ambitieux.
+                Langages : <strong>Rust, C, C++, Python, Java</strong>. Je recherche un <strong>CDI à Paris à partir de septembre 2027</strong> dans l'embarqué, l'automobile ou la robotique.
             </p>`,
         educationMsg: `<ul>
-            <li><b>Cycle d'ingénieur en informatique - 2024/2027</b><br>Polytech - Nice Sophia</li><br><br>
-            <li><b>BUT Informatique en alternance - 2022/2024</b><br>IUT Nice Côte d’Azur - Site de Sophia Antipolis</li><br><br>
-            <li><b>Baccalauréat Général, Section ESABAC, Mention Très Bien - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
+            <li><b>Diplôme d'ingénieur en informatique, parcours IoT &amp; CPS, en apprentissage - 2024/2027</b><br>Polytech Nice Sophia - Université Côte d'Azur</li><br><br>
+            <li><b>DUT Informatique en alternance - 2022/2024</b><br>IUT Nice Côte d'Azur - Sophia Antipolis</li><br><br>
+            <li><b>Baccalauréat Général, Section EsaBac (double diplôme franco-italien), Mention Très Bien - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
         </ul>`,
         workMsg: `<ul>
-            <li><b>Apprentissage – Ampere Software Technology (Groupe Renault) Septembre 2024 - présent</b>
+            <li><b>Ingénieur logiciel embarqué &amp; SDV (apprentissage) – Ampere Software Technology (Groupe Renault) – Septembre 2024 - présent</b>
                 <ul>
-                    <li>Développement d’outils logiciels pour l’automatisation et l’amélioration de la fiabilité des tests de véhicules définis par logiciel (SDV).</li>
-                    <li>Conception d’une bibliothèque Python pour générer des jeux de données réalistes et d’une application Rust (RMES) utilisant l’API GraphQL pour extraire et structurer les messages, intégrée dans un pipeline CI/CD.</li>
+                    <li>Conception et benchmark de <b>CarOS</b>, une plateforme de développement automobile basée sur l'environnement <b>Software-Defined Vehicle</b> de Google.</li>
+                    <li>Bring-up de la plateforme sur <b>Raspberry Pi</b> et sur appareils virtuels <b>Cuttlefish</b>, mise en place des pipelines <b>CI/CD</b>.</li>
+                    <li>Réalisation de cas d'usage de bout en bout : communication orientée services, diagnostic véhicule et traitement de données.</li>
+                    <li>Réécriture d'un prototype Python en un outil CLI/TUI modulaire en <b>Rust</b> générant des commandes de test <b>SOME/IP</b>, <b>Protobuf</b> et GraphQL, testé avec des mocks et intégré à <b>GitLab CI</b>.</li>
                 </ul>
             </li>
             <br>
-            <li><b>Apprentissage – European Systems Integration Septembre 2022 - Juillet 2024</b>
+            <li><b>Stage robotique &amp; vision par ordinateur – DNIIT (Da Nang, Vietnam) – Mai 2026 - Août 2026</b>
                 <ul>
-                    <li>Développement d’une application Java pour l’exportation de données au format JSON depuis une base de données distante.</li>
-                    <li>Développement de tests automatisés en Java avec Selenium et TestNG, puis migration vers TypeScript avec Cypress.</li>
+                    <li>Asservissement visuel en boucle fermée d'un bras industriel <b>SCARA</b> pour du pick-and-place de cibles en mouvement.</li>
+                    <li>Détection d'objets et estimation de pose en temps réel avec <b>YOLO</b>, intégrées à <b>ROS 2</b> et <b>MoveIt 2</b>.</li>
+                    <li>Validation de la cinématique et de la commande PID sous <b>MATLAB</b> et <b>Gazebo</b> avant déploiement sur le robot réel.</li>
                 </ul>
             </li>
-        </ul>
-        `,
+            <br>
+            <li><b>Développeur logiciel (apprentissage) – European Systems Integration – Septembre 2022 - Juillet 2024</b>
+                <ul>
+                    <li>Développement d'une application <b>Java</b> d'export JSON de données depuis une base distante.</li>
+                    <li>Automatisation des tests de bout en bout avec Selenium/TestNG, puis migration vers <b>TypeScript/Cypress</b>.</li>
+                </ul>
+            </li>
+        </ul>`,
         unknownCmd: "Cette commande n'est pas reconnue. Tapez \"/help\" pour voir les commandes disponibles.",
-        projectsMsg: `<p>Cliquez sur le projet qui vous intéresse:<br>
+        projectsMsg: `<p>Cliquez sur le projet qui vous intéresse :<br>
             <ol>
-                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">"Emulateur Chip-8 en Rust - 2025"</a></li>
-                <li><a href="https://github.com/Loren844/blorenzo-portfolio" target="_blank">Portfolio personnel - 2023</a></li>
-                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Projet Application Mobile - Semestre 4 BUT Informatique</a></li>
-                <li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (java), variante de Risk - Semestre 2 BUT Informatique</a></li>
-                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - Semestre 1 BUT Informatique</a></li>
+                <li><a href="https://github.com/Loren844/scara-visual-servoing" target="_blank">Asservissement visuel d'un robot SCARA (ROS 2, YOLO, MoveIt 2) - Stage DNIIT 2026</a></li>
+                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">Émulateur CHIP-8 en Rust (SDL2) - 2025</a></li>
+                <li><a href="https://github.com/Loren844/MotiOS" target="_blank">MotiOS : assistant iOS pour Pokémon GO (OCR, calcul d'IV)</a></li>
+                <li><a href="https://github.com/Loren844/portfolio" target="_blank">Ce portfolio interactif (FR/EN/IT)</a></li>
+                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Application mobile Android (Java) - BUT Informatique S4</a></li>
+                <li><a href="https://loren844.github.io/FISK/" target="_blank">Jeu "FISK" (Java), variante de Risk - BUT Informatique S2</a></li>
+                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Jeu de loto en C - BUT Informatique S1</a></li>
             </ol>`,
-        cv_link: "assets/CV_Lorenzo_BALADIER_fr.pdf",
+        cv_link: "https://loren844.github.io/cv/fr.pdf",
         replay: "Rejouer",
         quit: "Quitter",
         langCmd: "Changer la langue : /lang fr, /lang en ou /lang it",
@@ -98,7 +110,7 @@ const translations = {
         enter: "Enter",
         input: "Please enter a command...",
         help: "Show the list of available commands",
-        cv: "Download my resume",
+        cv: "Open my resume",
         projects: "Show my projects",
         contact: "Contact me / See my useful links",
         aboutme: "Learn more about me",
@@ -110,50 +122,63 @@ const translations = {
         echo: "Returns the message written by the user",
         clear: "Clear the console",
         contactMsg: `You can contact me by the means below:<br><br>
-            Email: lobaladier@gmail.com <br>
+            Email : <a href="mailto:contact@lorenzo-baladier.fr">contact@lorenzo-baladier.fr</a><br>
             <a href="https://www.linkedin.com/in/lorenzo-baladier/" target="_blank">See my LinkedIn</a><br>
-            <a href="https://github.com/Loren844" target="_blank">See my GitHub</a>`,
+            <a href="https://github.com/Loren844" target="_blank">See my GitHub</a><br>
+            <a href="https://lorenzo-baladier.fr" target="_blank">See my website</a>`,
         aboutMsg: `<p>
-            I am <strong>Lorenzo BALADIER</strong>, a computer science student at Polytech Nice - Sophia Antipolis. Passionate about software development and new technologies, I am proficient in several programming languages such as <strong>Rust, Python, Java</strong>, and <strong>C/C++</strong>, with hands-on experience in application design, test automation, and developing reliable and high-performance solutions.
+            I am <strong>Lorenzo BALADIER</strong>, a final-year engineering student at <strong>Polytech Nice Sophia</strong> (IoT &amp; CPS track) and an <strong>embedded &amp; SDV software engineering apprentice</strong> at <strong>Ampere Software Technology (Renault Group)</strong>.
             </p>
             <br>
             <p>
-            During my previous experiences, notably at <strong>Ampere Software Technology (Renault Group)</strong> and <strong>European Systems Integration</strong>, I participated in various projects ranging from test automation to the creation of software tools integrated into CI/CD pipelines, using Docker and APIs (GraphQL, REST).
+            I work on the software-defined vehicle: bring-up on <strong>Raspberry Pi</strong> and <strong>Cuttlefish</strong>, service-oriented communication (<strong>SOME/IP</strong>, <strong>Protobuf</strong>), CI/CD and <strong>Rust</strong> tooling. During an internship in Vietnam (DNIIT), I built visual servoing for a SCARA robot arm with <strong>ROS 2</strong>, <strong>MoveIt 2</strong> and <strong>YOLO</strong>.
             </p>
             <br>
             <p>
-            I enjoy tackling technical challenges, exploring new technologies, and contributing to ambitious projects.
+            Languages: <strong>Rust, C, C++, Python, Java</strong>. I am looking for a <strong>full-time role in Paris from September 2027</strong> in embedded systems, automotive or robotics.
             </p>`,
         educationMsg: `<ul>
-            <li><b>Engineering cycle in Computer Science - 2024/2027</b><br>Polytech - Nice Sophia</li><br><br>
-            <li><b>Bachelor in Computer Science (apprenticeship) - 2022/2024</b><br>IUT Nice Côte d’Azur - Sophia Antipolis</li><br><br>
-            <li><b>General Baccalaureate, ESABAC Section, Highest Honors - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
+            <li><b>MSc-level Engineering Degree in Computer Science, IoT &amp; CPS, apprenticeship - 2024/2027</b><br>Polytech Nice Sophia - Université Côte d'Azur</li><br><br>
+            <li><b>University Diploma in Computer Science (DUT), apprenticeship - 2022/2024</b><br>IUT Nice Côte d'Azur - Sophia Antipolis</li><br><br>
+            <li><b>French Baccalaureate, EsaBac (French-Italian dual diploma), Highest Honors - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
         </ul>`,
         workMsg: `<ul>
-            <li><b>Apprenticeship - Ampere Software Technology (Renault Group) Sept 2024 - present</b>
+            <li><b>Embedded &amp; SDV Software Engineer (apprentice) – Ampere Software Technology (Renault Group) – Sept 2024 - present</b>
                 <ul>
-                    <li>Development of software tools for the automation and reliability enhancement of software-defined vehicle (SDV) testing.</li>
-                    <li>Design of a Python library to generate realistic datasets and a Rust application (RMES) leveraging the GraphQL API to extract and structure messages, integrated within a CI/CD pipeline.</li>
+                    <li>Designed and benchmarked <b>CarOS</b>, an automotive development platform built on Google's <b>Software-Defined Vehicle</b> environment.</li>
+                    <li>Brought the platform up on <b>Raspberry Pi</b> hardware and on <b>Cuttlefish</b> virtual devices; set up the <b>CI/CD</b> pipelines.</li>
+                    <li>Built end-to-end use cases covering service-oriented communication, vehicle diagnostics and data processing.</li>
+                    <li>Rewrote a Python prototype into a modular <b>Rust</b> CLI/TUI tool generating <b>SOME/IP</b>, <b>Protobuf</b> and GraphQL test commands, unit-tested with mocks and integrated into <b>GitLab CI</b>.</li>
                 </ul>
             </li>
             <br>
-            <li><b>Apprenticeship - European Systems Integration Sept 2022 - Jul 2024</b>
+            <li><b>Robotics &amp; Computer Vision Intern – DNIIT (Da Nang, Vietnam) – May 2026 - Aug 2026</b>
                 <ul>
-                    <li>Java application development for exporting data in JSON format from a remote database.</li>
-                    <li>Automated testing development in Java using Selenium and TestNG, followed by migration to TypeScript with Cypress.</li>
+                    <li>Implemented closed-loop <b>visual servoing</b> of an industrial <b>SCARA</b> arm for dynamic pick-and-place of moving targets.</li>
+                    <li>Integrated real-time <b>YOLO</b> object detection and pose estimation with <b>ROS 2</b> and <b>MoveIt 2</b>.</li>
+                    <li>Validated kinematics and PID control in <b>MATLAB</b> and <b>Gazebo</b> before deploying on the physical robot.</li>
+                </ul>
+            </li>
+            <br>
+            <li><b>Software Developer (apprentice) – European Systems Integration – Sept 2022 - Jul 2024</b>
+                <ul>
+                    <li>Developed a <b>Java</b> application exporting data from a remote database to JSON.</li>
+                    <li>Automated end-to-end tests with Selenium/TestNG, then led their migration to <b>TypeScript/Cypress</b>.</li>
                 </ul>
             </li>
         </ul>`,
         unknownCmd: "This command is not recognized. Type \"/help\" to see the available commands.",
         projectsMsg: `<p>Click on the project you are interested in:<br>
             <ol>
-                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">"Rust Chip-8" Emulator - 2025</a></li>
-                <li><a href="https://github.com/Loren844/blorenzo-portfolio" target="_blank">Personal portfolio - 2023</a></li>
-                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Mobile Application Project - Semester 4 Computer Science Bachelor</a></li>
-                <li><a href="https://loren844.github.io/FISK/" target="_blank">"FISK" game (java), Risk variant - Semester 2 Computer Science Bachelor</a></li>
-                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Loto game in C - Semester 1 Computer Science Bachelor</a></li>
+                <li><a href="https://github.com/Loren844/scara-visual-servoing" target="_blank">SCARA robot visual servoing (ROS 2, YOLO, MoveIt 2) - DNIIT internship 2026</a></li>
+                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">CHIP-8 emulator in Rust (SDL2) - 2025</a></li>
+                <li><a href="https://github.com/Loren844/MotiOS" target="_blank">MotiOS: iOS assistant for Pokémon GO (OCR, IV computation)</a></li>
+                <li><a href="https://github.com/Loren844/portfolio" target="_blank">This interactive portfolio (FR/EN/IT)</a></li>
+                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Android mobile app (Java) - CS Bachelor, semester 4</a></li>
+                <li><a href="https://loren844.github.io/FISK/" target="_blank">"FISK" game (Java), Risk variant - CS Bachelor, semester 2</a></li>
+                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Bingo game in C - CS Bachelor, semester 1</a></li>
             </ol>`,
-        cv_link: "assets/CV_Lorenzo_BALADIER_en.pdf",
+        cv_link: "https://loren844.github.io/cv/en.pdf",
         replay: "Replay",
         quit: "Quit",
         langCmd: "Change the language: /lang fr, /lang en or /lang it",
@@ -189,7 +214,7 @@ const translations = {
         enter: "Entra",
         input: "Inserisci un comando...",
         help: "Mostra l'elenco dei comandi disponibili",
-        cv: "Scarica il mio CV",
+        cv: "Apri il mio CV",
         projects: "Mostra i miei progetti",
         contact: "Contattami / Vedi i miei link utili",
         aboutme: "Scopri di più su di me",
@@ -201,50 +226,63 @@ const translations = {
         echo: "Restituisce il messaggio scritto dall'utente",
         clear: "Pulisci la console",
         contactMsg: `Puoi contattarmi tramite i mezzi qui sotto:<br><br>
-            Email: lobaladier@gmail.com <br>
+            Email : <a href="mailto:contact@lorenzo-baladier.fr">contact@lorenzo-baladier.fr</a><br>
             <a href="https://www.linkedin.com/in/lorenzo-baladier/" target="_blank">Vedi il mio LinkedIn</a><br>
-            <a href="https://github.com/Loren844" target="_blank">Vedi il mio GitHub</a>`,
+            <a href="https://github.com/Loren844" target="_blank">Vedi il mio GitHub</a><br>
+            <a href="https://lorenzo-baladier.fr" target="_blank">Vedi il mio sito</a>`,
         aboutMsg: `<p>
-                Sono <strong>Lorenzo BALADIER</strong>, studente di informatica al Polytech Nice - Sophia Antipolis. Appassionato di sviluppo software e nuove tecnologie, padroneggio diversi linguaggi di programmazione come <strong>Rust, Python, Java</strong> e <strong>C/C++</strong>, e ho un'esperienza concreta nella progettazione di applicazioni, nell'automazione dei test e nello sviluppo di soluzioni affidabili e performanti.
+                Sono <strong>Lorenzo BALADIER</strong>, studente di ingegneria all'ultimo anno al <strong>Polytech Nice Sophia</strong> (indirizzo IoT &amp; CPS) e ingegnere software <strong>embedded &amp; SDV</strong> in apprendistato presso <strong>Ampere Software Technology (Gruppo Renault)</strong>.
             </p>
             <br>
             <p>
-                Durante le mie esperienze precedenti, in particolare presso <strong>Ampere Software Technology (Gruppo Renault)</strong> e <strong>European Systems Integration</strong>, ho partecipato a progetti vari, dall'automazione dei test alla creazione di strumenti software integrati in pipeline CI/CD, utilizzando Docker e API (GraphQL, REST).
+                Lavoro sul veicolo definito dal software: bring-up su <strong>Raspberry Pi</strong> e <strong>Cuttlefish</strong>, comunicazione orientata ai servizi (<strong>SOME/IP</strong>, <strong>Protobuf</strong>), CI/CD e strumenti in <strong>Rust</strong>. Durante un tirocinio in Vietnam (DNIIT), ho realizzato il visual servoing di un braccio robotico SCARA con <strong>ROS 2</strong>, <strong>MoveIt 2</strong> e <strong>YOLO</strong>.
             </p>
             <br>
             <p>
-                Mi piace affrontare sfide tecniche, esplorare nuove tecnologie e contribuire a progetti ambiziosi.
+                Linguaggi: <strong>Rust, C, C++, Python, Java</strong>. Cerco un <strong>contratto a tempo indeterminato a Parigi da settembre 2027</strong> nei sistemi embedded, nell'automotive o nella robotica.
             </p>`,
         educationMsg: `<ul>
-            <li><b>Ciclo di ingegneria informatica - 2024/2027</b><br>Polytech - Nice Sophia</li><br><br>
-            <li><b>Laurea triennale in Informatica (apprendistato) - 2022/2024</b><br>IUT Nice Côte d’Azur - Sophia Antipolis</li><br><br>
-            <li><b>Baccalaureato Generale, Sezione ESABAC, Lode - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
+            <li><b>Laurea in Ingegneria Informatica (livello magistrale), IoT &amp; CPS, in apprendistato - 2024/2027</b><br>Polytech Nice Sophia - Université Côte d'Azur</li><br><br>
+            <li><b>Diploma universitario in Informatica (DUT), in apprendistato - 2022/2024</b><br>IUT Nice Côte d'Azur - Sophia Antipolis</li><br><br>
+            <li><b>Baccalaureato francese, EsaBac (doppio diploma italo-francese), Lode - 2019/2022</b><br>Lycée Pierre et Marie Curie - Menton</li><br><br>
         </ul>`,
         workMsg: `<ul>
-            <li><b>Apprendistato – Ampere Software Technology (Gruppo Renault) Settembre 2024 - presente</b>
+            <li><b>Ingegnere software embedded &amp; SDV (apprendistato) – Ampere Software Technology (Gruppo Renault) – Settembre 2024 - presente</b>
                 <ul>
-                    <li>Sviluppo di strumenti software per l'automazione e il miglioramento dell'affidabilità dei test di veicoli definiti dal software (SDV).</li>
-                    <li>Progettazione di una libreria Python per generare set di dati realistici e di un'applicazione Rust (RMES) che utilizza l'API GraphQL per estrarre e strutturare i messaggi, integrata in una pipeline CI/CD.</li>
+                    <li>Progettazione e benchmark di <b>CarOS</b>, una piattaforma di sviluppo automotive basata sull'ambiente <b>Software-Defined Vehicle</b> di Google.</li>
+                    <li>Bring-up della piattaforma su <b>Raspberry Pi</b> e su dispositivi virtuali <b>Cuttlefish</b>; realizzazione delle pipeline <b>CI/CD</b>.</li>
+                    <li>Sviluppo di casi d'uso end-to-end: comunicazione orientata ai servizi, diagnostica del veicolo ed elaborazione dei dati.</li>
+                    <li>Riscrittura di un prototipo Python in uno strumento CLI/TUI modulare in <b>Rust</b> che genera comandi di test <b>SOME/IP</b>, <b>Protobuf</b> e GraphQL, testato con mock e integrato in <b>GitLab CI</b>.</li>
                 </ul>
             </li>
             <br>
-            <li><b>Apprendistato – European Systems Integration Settembre 2022 - Luglio 2024</b>
+            <li><b>Tirocinio robotica e visione artificiale – DNIIT (Da Nang, Vietnam) – Maggio 2026 - Agosto 2026</b>
                 <ul>
-                    <li>Sviluppo di un'applicazione Java per l'esportazione di dati in formato JSON da un database remoto.</li>
-                    <li>Sviluppo di test automatizzati in Java con Selenium e TestNG, poi migrazione verso TypeScript con Cypress.</li>
+                    <li>Visual servoing ad anello chiuso di un braccio industriale <b>SCARA</b> per il pick-and-place di bersagli in movimento.</li>
+                    <li>Rilevamento oggetti e stima della posa in tempo reale con <b>YOLO</b>, integrati con <b>ROS 2</b> e <b>MoveIt 2</b>.</li>
+                    <li>Validazione della cinematica e del controllo PID in <b>MATLAB</b> e <b>Gazebo</b> prima del deploy sul robot reale.</li>
+                </ul>
+            </li>
+            <br>
+            <li><b>Sviluppatore software (apprendistato) – European Systems Integration – Settembre 2022 - Luglio 2024</b>
+                <ul>
+                    <li>Sviluppo di un'applicazione <b>Java</b> per l'esportazione in JSON di dati da un database remoto.</li>
+                    <li>Automazione dei test end-to-end con Selenium/TestNG, poi migrazione verso <b>TypeScript/Cypress</b>.</li>
                 </ul>
             </li>
         </ul>`,
         unknownCmd: "Questo comando non è riconosciuto. Digita \"/help\" per vedere i comandi disponibili.",
         projectsMsg: `<p>Clicca sul progetto che ti interessa:<br>
             <ol>
-                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">"Emulatore Chip-8 in Rust - 2025"</a></li>
-                <li><a href="https://github.com/Loren844/blorenzo-portfolio" target="_blank">Portfolio personale - 2023</a></li>
-                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Progetto Applicazione Mobile - Semestre 4 Laurea in Informatica</a></li>
-                <li><a href="https://loren844.github.io/FISK/" target="_blank">Gioco "FISK" (java), variante di Risk - Semestre 2 Laurea in Informatica</a></li>
-                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Gioco del loto in C - Semestre 1 Laurea in Informatica</a></li>
+                <li><a href="https://github.com/Loren844/scara-visual-servoing" target="_blank">Visual servoing di un robot SCARA (ROS 2, YOLO, MoveIt 2) - Tirocinio DNIIT 2026</a></li>
+                <li><a href="https://github.com/Loren844/rust-chip-8" target="_blank">Emulatore CHIP-8 in Rust (SDL2) - 2025</a></li>
+                <li><a href="https://github.com/Loren844/MotiOS" target="_blank">MotiOS: assistente iOS per Pokémon GO (OCR, calcolo IV)</a></li>
+                <li><a href="https://github.com/Loren844/portfolio" target="_blank">Questo portfolio interattivo (FR/EN/IT)</a></li>
+                <li><a href="https://github.com/Loren844/filrouge" target="_blank">Applicazione mobile Android (Java) - Laurea in Informatica, semestre 4</a></li>
+                <li><a href="https://loren844.github.io/FISK/" target="_blank">Gioco "FISK" (Java), variante di Risk - Laurea in Informatica, semestre 2</a></li>
+                <li><a href="https://github.com/Loren844/LOTO-SAE" target="_blank">Gioco del loto in C - Laurea in Informatica, semestre 1</a></li>
             </ol>`,
-        cv_link: "assets/CV_Lorenzo_BALADIER_en.pdf",
+        cv_link: "https://loren844.github.io/cv/it.pdf",
         replay: "Rigioca",
         quit: "Esci",
         langCmd: "Cambia la lingua: /lang fr, /lang en o /lang it",
